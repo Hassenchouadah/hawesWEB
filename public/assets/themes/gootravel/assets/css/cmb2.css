@@ -1,0 +1,495 @@
+.submit-property-form .cmb-td {
+    padding: 0;
+}
+
+.submit-property-form .cmb-th label {
+    padding: 0;
+}
+
+.submit-property-form .cmb-th {
+    color: inherit;
+    float: inherit;
+    font-weight: inherit;
+    padding: 0;
+    vertical-align: inherit;
+    width: inherit;
+}
+
+.submit-property-form .nice-select {
+    height: 45px;
+    padding-top: 3px;
+    /*margin-bottom: 20px;*/
+}
+
+.submit-property-form input, .payment-form input[type=text], .payment-form .nice-select, .submit-property-form textarea {
+    margin-bottom: 0;
+}
+
+.cmb-repeatable-group.repeatable .cmb-group-title {
+    padding: 20px;
+}
+
+.cmb2-metabox .cmb-field-list>.cmb-row:first-of-type>.cmb-th {
+    width: 100%;
+}
+/*
+.cmb-type-group .cmb-row:not(:last-of-type) {
+    border-bottom: none !important;
+}
+*/
+.cmb2-metabox button.dashicons-before.dashicons-no-alt.cmb-remove-group-row:not([disabled]) {
+    display: grid;
+}
+.pw-map-latitude {
+    min-width: 47% !important;
+    float: left;
+}
+
+.pw-map-longitude {
+    min-width: 50% !important;
+    float: right;
+}
+
+.cmb2-metabox .headline h2 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.cmb2-wrap .cmb-row {
+    margin-bottom: 20px !important;
+}
+
+.block-title {
+    color: #000;
+    font-family: var(--thm-headline-font);
+    font-size: 22px;
+    font-weight: 700;
+    /*padding-bottom: 20px;*/
+}
+
+.cmb-th {
+    color: #222;
+    float: left;
+    font-weight: 600;
+    line-height: 1.3;
+    padding: 20px 10px 20px 0;
+    vertical-align: top;
+    width: 200px;
+}
+
+.cmb-th + .cmb-td {
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+
+.cmb2-wrap select, .cmb2-wrap textarea, .cmb2-wrap input[type="text"], .cmb2-wrap input[type="password"], .cmb2-wrap input[type="datetime"], .cmb2-wrap input[type="datetime-local"], .cmb2-wrap input[type="date"], .cmb2-wrap input[type="month"], .cmb2-wrap input[type="time"], .cmb2-wrap input[type="week"], .cmb2-wrap input[type="number"], .cmb2-wrap input[type="email"], .cmb2-wrap input[type="url"], .cmb2-wrap input[type="search"], .cmb2-wrap input[type="tel"], .cmb2-wrap input[type="color"], .cmb2-wrap .uneditable-input {
+    min-width: 100%;
+}
+
+.cmb2-wrap input.cmb2-upload-file {
+    min-width: 80%;
+}
+
+
+.cmb2-col-4 {
+    -ms-flex: 0 0 25%;
+    width: 25%;
+    max-width: 25%;
+    float: left;
+}
+
+.cmb2-col-3 {
+    -ms-flex: 0 0 33.33%;
+    width: 33.33%;
+    max-width: 33.33%;
+    float: left;
+}
+
+.cmb2-col-2 {
+    -ms-flex: 0 0 33.33%;
+    width: 50%;
+    max-width: 50%;
+    float: left;
+}
+
+.pl-15 {
+    padding-left: 15px;
+}
+
+
+.cmb2-wrap li {
+    font-size: 14px;
+    line-height: 16px;
+    margin: 1px 0 5px 0;
+    width: inherit;
+    max-width: 25%;
+    float: left;
+    margin-bottom: 7px;
+    flex: 0 0 25%;
+}
+
+.cmb-row input[type=radio] + label, .cmb-row input[type="checkbox"] + label {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    cursor: pointer;
+}
+
+
+.cmb2-checkbox-list {
+    list-style: none;
+    padding: 0;
+    display: table;
+    width: 100%;
+}
+/*
+.cmb2-wrap ul {
+    margin-bottom: 30px !important;
+}
+*/
+.cmb-row p.cmb2-metabox-description, .cmb-row span.cmb2-metabox-description {
+    color: #999;
+    line-height: 30px;
+    font-size: 14px;
+    font-style: normal;
+    padding-top: 0;
+}
+
+
+@keyframes hover-color {
+    from {
+    border-color: #c0c0c0;
+}
+
+to {
+    border-color: #3e97eb;
+}
+}
+
+.cmb-row input[type=radio],
+.cmb-row input[type="checkbox"] {
+    position: absolute;
+    display: none;
+}
+
+.cmb-row input[type=radio][disabled],
+.cmb-row input[type="checkbox"][disabled] {
+    cursor: not-allowed;
+}
+
+.cmb-row input[type=radio] + label,
+.cmb-row input[type="checkbox"] + label {
+    position: relative;
+    display: block;
+    padding-left: 30px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.cmb-row input[type=radio] + label:hover:before,
+.cmb-row input[type="checkbox"] + label:hover:before {
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+    animation-name: hover-color;
+}
+
+.cmb-row input[type=radio] + label:before,
+.cmb-row input[type="checkbox"] + label:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+
+    content: "";
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    padding: 2px;
+    margin-right: 10px;
+    text-align: center;
+
+}
+
+.cmb-row input[type=radio] + label:after,
+.cmb-row input[type="checkbox"] + label:after {
+    position: absolute;
+    display: none;
+    content: '';
+}
+
+.cmb-row input[type=radio][disabled] + label,
+.cmb-row input[type="checkbox"][disabled] + label {
+    cursor: not-allowed;
+    color: #e4e4e4;
+}
+
+.cmb-row input[type=radio][disabled] + label:hover, input[type=radio][disabled] + label:before, input[type=radio][disabled] + label:after,
+.cmb-row input[type="checkbox"][disabled] + label:hover,
+.cmb-row input[type="checkbox"][disabled] + label:before,
+.cmb-row input[type="checkbox"][disabled] + label:after {
+    cursor: not-allowed;
+}
+
+.cmb-row input[type=radio][disabled] + label:hover:before,
+.cmb-row input[type="checkbox"][disabled] + label:hover:before {
+    border: 1px solid #e4e4e4;
+    animation-name: none;
+}
+
+.cmb-row input[type=radio][disabled] + label:before,
+.cmb-row input[type="checkbox"][disabled] + label:before {
+    border-color: #e4e4e4;
+}
+
+.cmb-row input[type=radio]:checked + label:before,
+.cmb-row input[type="checkbox"]:checked + label:before {
+    animation-name: none;
+}
+
+.cmb-row input[type=radio]:checked + label:after,
+.cmb-row input[type="checkbox"]:checked + label:after {
+    display: block;
+}
+
+.cmb-row input[type=radio] + label:before {
+    border-radius: 50%;
+}
+
+.cmb-row input[type=radio] + label:after {
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #fa2964;
+}
+
+.cmb-row input[type=radio]:checked + label:before {
+    border: 1px solid #fa2964;
+}
+
+.cmb-row input[type=radio]:checked[disabled] + label:before {
+    border: 1px solid #c9e2f9;
+}
+
+.cmb-row input[type=radio]:checked[disabled] + label:after {
+    background: #c9e2f9;
+}
+
+.cmb-row input[type="checkbox"] + label:before {
+    border-radius: 3px;
+}
+
+.cmb-row input[type="checkbox"] + label:after {
+    top: 2px;
+    left: 7px;
+    box-sizing: border-box;
+    width: 6px;
+    height: 12px;
+    transform: rotate(45deg);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #fff;
+    border-top: 0;
+    border-left: 0;
+}
+
+.cmb-row input[type="checkbox"]:checked + label:before {
+    border: #fa2964;
+    background: #fa2964;
+}
+
+.cmb-row input[type="checkbox"]:checked[disabled] + label:before {
+    border: #c9e2f9;
+    background: #c9e2f9;
+}
+
+.cmb-group-name {
+    float: left;
+    font-weight: 600;
+    line-height: 1.3;
+    vertical-align: top;
+    color: #6b6e80;
+    font-size: 18px;
+    padding-top: 40px;
+    padding-bottom: 10px;
+}
+
+.cmb-repeatable-group .cmb2-upload-button {
+    float: right;
+    position: absolute;
+}
+
+.cmb2-wrap .nice-select .option {
+    max-width: 100%;
+}
+
+.submit-page .button-primary {
+    color: #fff;
+    height: 50px;
+    border: none;
+    font-weight: 700;
+    min-width: 170px;
+    border-radius: 40px;
+    background-color: var(--thm-primary);
+}
+
+.submit-page .button-primary:hover {
+    color: #222;
+    background-color: #eee;
+}
+
+.submit-page .cmb-row.cmb-remove-field-row {
+    padding: 0;
+}
+
+.cmb-type-group .cmb-row:first-child {
+    border: none;
+}
+
+
+
+
+
+.cmb2-wrap .cmb-row {
+    margin-bottom: 15px !important;
+}
+
+.cmb-type-group .cmb-row, .cmb2-postbox .cmb-row {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.cmb2-metabox button.dashicons-before.dashicons-no-alt.cmb-remove-group-row:not([disabled]) {
+    display: none;
+}
+
+.cmb-row.cmb-remove-field-row {
+    margin-top: 20px !important;
+}
+
+.cmb2-wrap input:not([type=hidden]) + .button, .cmb2-wrap input:not([type=hidden]) + input, .cmb2-wrap input:not([type=hidden]) + select {
+    margin: 0 !important;
+    margin-top: 20px;
+}
+
+.cmb2-wrap .button, .cmb2-wrap button {
+    padding: 10px;
+    width: 140px;
+    height: 40px;
+}
+
+.cmb2-wrap input:focus, .cmb2-wrap textarea:focus {
+    background: #894EA3;
+}
+
+.cmb2-wrap ul {
+    margin: 0;
+    padding: 0;
+}
+
+.cmb-th label {
+    color: #6b6e80;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.cmb-td label {
+    font-weight: 500;
+}
+
+.cmb-row.cmb-type-taxonomy-multicheck .cmb-td span {
+    background: #eee;
+    border: 1px solid #ddd;
+    color: #484848;
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.page-template-template-box-full #content, .page-template-template-box-right_sidebar #content {
+    padding: 0;
+}
+
+.cmb2-wrap li {
+    list-style: none
+}
+
+.cmb-repeatable-group.repeatable .cmb-group-title {
+    padding: 20px;
+}
+
+.cmb-type-group .cmb-row, .cmb2-postbox .cmb-row {
+    padding: 0 0 0.1em !important;
+    margin: 0 0 .8em;
+}
+
+.cmb-repeatable-group .cmb-group-title {
+    margin: 0 !important;
+}
+
+.cmb-nested div.cmb-repeat-group-field {
+    padding: 10px 20px !important;
+}
+
+.cmb-type-group .cmb-repeat-group-field {
+    padding-top: 0 !important;
+}
+
+.cmb2-wrap .button-secondary, .cmb2-wrap button {
+    margin-right: 30px;
+    border: none;
+    background: #ff5520;
+    color: #fff;
+    padding: 11px;
+    font-weight: 400;
+    margin-top: 0 !important;
+    display: inline-table;
+    border-radius: 4px;
+}
+
+.cmb-type-group .cmb-td, .cmb2-postbox .cmb-td {
+    padding: 0 !important;
+}
+
+.cmb2-wrap textarea {
+    padding: 15px !important;
+}
+
+.button-primary {
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.cmb-th + .cmb-td {
+    float: inherit !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.cmb-th {
+    padding: 0 !important;
+    vertical-align: top;
+    width: 100% !important;
+}
+
+.cmb2-media-status .embed-status .cmb2-remove-file-button, .cmb2-media-status .img-status .cmb2-remove-file-button {
+    background: url('../img/ico-delete.html') !important;
+    height: 24px !important;
+    width: 24px !important;
+    left: -5px;
+    top: -5px;
+}
+
+.cmb-row .cmb2-metabox-title {
+    font-size: 24px;
+}

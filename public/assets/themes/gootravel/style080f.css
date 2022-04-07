@@ -1,0 +1,339 @@
+/*
+Theme Name: Gootravel
+Author: Ongoing Themes
+Author URI: http://ongoingthemes.com
+Description: Gootravel is a Real Estate WordPress theme designed for real estate agencies, agents and tour owners. You can also use this theme as a corporate page. The homepage has many sections: full width slider, comprehensive tour search filters, locations, testimonials and other necessary options to present information about the services you provide. 
+Requires at least: 5.3
+Tested up to: 5.8.2
+Requires PHP: 5.6
+Version: 1.0.0
+Tags: two-columns, right-sidebar, featured-images, translation-ready
+License: GNU General Public License
+License URI: http://www.gnu.org/licenses/gpl.html
+Text Domain: gootravel
+*/
+
+.alignleft {
+    float: left;
+	margin: 0.375em 1.75em 1.75em 0;
+}
+
+.alignright {
+	float: right;
+	margin: 0.375em 0 1.75em 1.75em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 0 auto 1.75em;
+}
+
+blockquote.alignleft {
+	margin: 0.3157894737em 1.4736842105em 1.473684211em 0;
+}
+
+blockquote.alignright {
+	margin: 0.3157894737em 0 1.473684211em 1.4736842105em;
+}
+
+blockquote.aligncenter {
+	margin-bottom: 1.473684211em;
+}
+.wp-caption {
+	margin-bottom: 1.75em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin: 0;
+}
+
+.wp-caption .wp-caption-text {
+	color: #686868;
+	font-size: 13px;
+	font-style: italic;
+	line-height: 1.6153846154;
+	padding-top: 0.5384615385em;
+}
+
+.sticky {
+    color: #d76565;
+}
+.bypostauthor{
+    background-color: #4d535f;
+    color: white;
+}
+
+
+/** Galleries */
+
+.gallery {
+	margin: 0 -1.1666667% 1.75em;
+}
+
+.gallery-item {
+	display: inline-block;
+	max-width: 33.33%;
+	padding: 0 1.1400652% 2.2801304%;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-1 .gallery-item {
+	max-width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-icon img {
+	margin: 0 auto;
+}
+
+.gallery-caption {
+	color: #686868;
+	display: block;
+	font-size: 13px;
+	font-style: italic;
+	line-height: 1.6153846154;
+	padding-top: 0.5384615385em;
+}
+
+.gallery-columns-6 .gallery-caption,
+.gallery-columns-7 .gallery-caption,
+.gallery-columns-8 .gallery-caption,
+.gallery-columns-9 .gallery-caption {
+	display: none;
+}
+
+
+/* calendar widget */
+.widget_calendar {
+    margin-bottom: 20px;
+}
+
+#wp-calendar {
+    width: 100%;
+}
+
+#wp-calendar caption {
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0;
+    padding: 8px;
+    outline: 0 none !important;
+    color: #fff;
+    background: #e43771;
+}
+
+#wp-calendar thead {
+    font-size: 10px;
+}
+
+#wp-calendar thead th {
+    text-align: center;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+#wp-calendar tfoot tr a {
+    text-shadow: none;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#wp-calendar tbody {
+    color: #999;
+}
+
+#wp-calendar tbody td {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+#wp-calendar tbody td:hover {
+    background: #fff;
+}
+
+#wp-calendar tbody .pad {
+    background: none;
+}
+
+#wp-calendar tfoot #next {
+    text-align: right;
+}
+
+#wp-calendar tfoot #prev {
+    text-align: left;
+}
+
+#wp-calendar tfoot td {
+    border-bottom: none !important;
+}
+
+dl {
+	margin: 0 0 1.75em;
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd {
+	margin: 0 0 1.75em;
+}
+
+.post-password-form input[type="password"] {
+    padding: 8px 20px;
+    border: 2px solid #e5e5e5;
+    color: #999999;
+    width: 100%;
+    line-height: 24px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-image-slice: 1;
+    border: 2px solid #DACCE2;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.post-password-form > :last-child {
+	margin-bottom: 0;
+}
+
+.post-password-form input[type="button"], .post-password-form input[type="submit"] {
+    margin-left: -6px;
+    margin-top: -1px;
+    background: #ece4f0;
+    line-height: 28px;
+    min-height: 50px;
+    background: none;
+    transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    font-weight: 400;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+    border: 2px solid #eee;
+    color: #414141;
+    font-size: 16px;
+    outline: 0;
+    vertical-align: middle;
+}
+
+.post-password-form input[type="button"]:hover, .post-password-form input[type="submit"]:hover {
+    background: #484848;
+    border: 2px solid #484848;
+}
+
+.pingback .comment-body > a {
+	box-shadow: 0 1px 0 0 currentColor;
+}
+.pingback .comment-body > a:hover,
+.pingback .comment-body > a:focus {
+	box-shadow: none;
+}
+.blog-comment .pingback,
+.blog-comment .trackback {
+	border-top: 1px solid #d1d1d1;
+	padding: 1.75em 0;
+}
+
+.wp-block-group {
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 40px;
+    background-color: #fff;
+}
+
+
+.wp-block-group__inner-container {
+    padding: 35px 30px;
+}
+
+.wp-block-group h2 {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 14px;
+    font-family: 'Inter', 'Recursive', sans-serif;
+    margin: 0;
+}
+
+.activity-details-widget {
+    margin-bottom: 40px;
+}
+
+.wp-block-search .wp-block-search__label {
+    display: none;
+}
+
+.wp-block-search .wp-block-search__input {
+    width: 100%;
+    height: 48px;
+    border: none;
+    padding-left: 15px;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.wp-block-search .wp-block-search__button {
+    top: 0;
+    right: 0;
+    color: #fff;
+    border: none;
+    height: 48px;
+    position: absolute;
+    background-color: #ff5520;
+}
+
+.nav-links div a {
+    color: #000;
+    height: 45px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 45px;
+    display: inline-block;
+    font-family: var(--thm-headline-font);
+    background-color: #ffffff;
+    transition: 0.4s all ease-in-out;
+    padding: 0 20px;
+}
+
+.nav-links div a:hover {
+    color: #fff;
+    background-color: var(--thm-primary);
+}
