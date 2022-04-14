@@ -1,0 +1,45 @@
+{% extends 'baseBack.html.twig'%}
+
+{% form_theme formhbg 'bootstrap_4_layout.html.twig' %}
+
+
+{% block body %}
+
+{{ form_start(formhbg,{attr:{novalidate:'novalidate'}})}}
+
+{{form_row(formhbg.nom)}}
+
+{{form_row(formhbg.city)}}
+
+{{form_row(formhbg.adress)}}
+
+{{form_row(formhbg.nomHotel)}}
+
+{{form_row(formhbg.dateAjout)}}
+
+{{form_row(formhbg.nbChambres)}}
+
+{{form_row(formhbg.nbSuites)}}
+
+{{form_row(formhbg.piscine)}}
+
+{{form_row(formhbg.imagee)}}
+
+{{form_row(formhbg.prix)}}
+
+<button type="SubmitType" class="btn btn-primary ">Ajouter hebergement</button>
+
+{{ form_end(formhbg)}}
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

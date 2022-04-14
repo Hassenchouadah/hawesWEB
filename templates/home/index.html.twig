@@ -39,39 +39,47 @@
                     <div class="activity-filter-area grid clearfix"
                         data-isotope="{ &quot;masonry&quot;: { &quot;columnWidth&quot;: 0 } }">
                         <div class="grid-sizer"></div>
+
+                        {%for h in hebergements%}
                         <div class="grid-item grid-size-25 guided-tours">
 
 
 
 
-                            <div class="activity-card">
+                            <a href="#"><div class="activity-card">
                                 <div class="activity-img position-relative">
-                                    <span class="price-badge">$ 90</span>
-                                    <img width="420" height="280"
-                                        src="{{asset('assets/uploads/2021/12/activity24.jpg')}}" class=" wp-post-image"
-                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><a href="#"><i
-                                                class="fas fa-heart"></i></a></span>
+                                    <span class="price-badge">$ {{h.prix}}</span>
+                                    <a href="#"> <img width="420" height="280"
+                                        src="{{asset('h.image')}}" class=" wp-post-image"
+                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><i
+                                                class="fas fa-heart"></i></span>
+                                 </a>
                                 </div>
                                 <div class="activity-text">
                                     <div class="activity-tilte-head headline ul-li">
-                                        <h3><a href="#" title="London Private Tour">London Private Tour</a></h3>
+                                        <h3><a href="#" title="{{ h.nomHotel }}">{{ h.nomHotel }}</a></h3>
                                         <div class="activity-features">
                                             <div class="icon-text">
                                                 <div class="icon"><i class="fas fa-clock"></i></div>
 
+                                                 {% if h.piscine == 1 %}
+                                                   
+                                                   avec piscine
+                                                   {% else %}
+                                                   pas de piscine
 
-                                                3 hours
+                                                 {% endif %}
+
+                                                
 
                                             </div>
                                             <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-map"></i></div><a href="#">London</a>
+                                                <div class="icon"><i class="fas fa-map"></i></div><a href="#">{{h.adress}}</a>
                                             </div>
                                             <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-credit-card"></i></div>Easy Cancel
+                                                <div class="icon"><i class="fas fa-credit-card"></i></div>annulation facile
                                             </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-user"></i></div>Live Guide
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <div class="activity-agent clearfix">
@@ -90,382 +98,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="grid-item grid-size-25 guided-tours">
-
-
-
-
-                            <div class="activity-card">
-                                <div class="activity-img position-relative">
-                                    <span class="price-badge">$ 90</span>
-                                    <img width="420" height="280"
-                                        src="{{asset('assets/uploads/2021/12/activity23.jpg')}}" class=" wp-post-image"
-                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><a href="#"><i
-                                                class="fas fa-heart"></i></a></span>
-                                </div>
-                                <div class="activity-text">
-                                    <div class="activity-tilte-head headline ul-li">
-                                        <h3><a href="#" title="Paris Live Guided Tour">Paris Live Guided Tour</a></h3>
-                                        <div class="activity-features">
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-clock"></i></div>
-
-
-                                                4 hours
-
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-map"></i></div><a href="#">Paris</a>
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-credit-card"></i></div>Easy Cancel
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-running"></i></div>Skip Line
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="activity-agent clearfix">
-                                        <div class="activity-agent-img float-left">
-                                            <img width="150" height="150"
-                                                src="{{asset('assets/uploads/2021/12/agent-4-150x150.jpg')}}"
-                                                class="author-img wp-post-image" alt="" loading="lazy" />
-                                        </div>
-                                        <div class="activity-agent-text">
-                                            <h4><a href="#">Anita
-                                                    May</a></h4>
-                                            <span>Example Travel Inc</span>
-                                        </div>
-                                        <div class="activity-btn float-right">
-                                            <a href="#"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item grid-size-25 guided-tours">
-
-
-
-
-                            <div class="activity-card">
-                                <div class="activity-img position-relative">
-                                    <span class="price-badge">$ 60</span>
-                                    <img width="420" height="280"
-                                        src="{{asset('assets/uploads/2021/12/activity22.jpg')}}" class=" wp-post-image"
-                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><a href="#"><i
-                                                class="fas fa-heart"></i></a></span>
-                                </div>
-                                <div class="activity-text">
-                                    <div class="activity-tilte-head headline ul-li">
-                                        <h3><a href="#" title="Amsterdam: Walking Tour">Amsterdam: Walking Tour</a></h3>
-                                        <div class="activity-features">
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-clock"></i></div>
-
-
-                                                2 hours
-
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-map"></i></div><a
-                                                    href="#">Amsterdam</a>
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-user"></i></div>Live Guide
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-running"></i></div>Skip Line
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="activity-agent clearfix">
-                                        <div class="activity-agent-img float-left">
-                                            <img width="150" height="150"
-                                                src="{{asset('assets/uploads/2021/12/agent-7-150x150.jpg')}}"
-                                                class="author-img wp-post-image" alt="" loading="lazy" />
-                                        </div>
-                                        <div class="activity-agent-text">
-                                            <h4><a href="#">Melinda
-                                                    Joe</a></h4>
-                                            <span>Demo Travel Inc</span>
-                                        </div>
-                                        <div class="activity-btn float-right">
-                                            <a href="#"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item grid-size-25 guided-tours">
-
-
-
-
-                            <div class="activity-card">
-                                <div class="activity-img position-relative">
-                                    <span class="price-badge">$ 120</span>
-                                    <img width="420" height="280"
-                                        src="{{asset('assets/uploads/2021/12/activity25.jpg')}}" class=" wp-post-image"
-                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><a href="#"><i
-                                                class="fas fa-heart"></i></a></span>
-                                </div>
-                                <div class="activity-text">
-                                    <div class="activity-tilte-head headline ul-li">
-                                        <h3><a href="#" title="Dubai Private Tour">Dubai Private Tour</a></h3>
-                                        <div class="activity-features">
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-clock"></i></div>
-
-
-                                                2 hours
-
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-map"></i></div><a href="#">Dubai</a>
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-credit-card"></i></div>Easy Cancel
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-car"></i></div>Pick-up
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="activity-agent clearfix">
-                                        <div class="activity-agent-img float-left">
-                                            <img width="150" height="150"
-                                                src="{{asset('assets/uploads/2021/12/agent-11-150x150.jpg')}}"
-                                                class="author-img wp-post-image" alt="" loading="lazy" />
-                                        </div>
-                                        <div class="activity-agent-text">
-                                            <h4><a href="#">Anna
-                                                    Truly</a></h4>
-                                            <span>Example Travel Inc</span>
-                                        </div>
-                                        <div class="activity-btn float-right">
-                                            <a href="#"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item grid-size-25 sightseeing-tours">
-
-
-
-
-                            <div class="activity-card">
-                                <div class="activity-img position-relative">
-                                    <span class="price-badge">$ 40</span>
-                                    <img width="420" height="280"
-                                        src="{{asset('assets/uploads/2021/12/activity38.jpg')}}" class=" wp-post-image"
-                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><a href="#"><i
-                                                class="fas fa-heart"></i></a></span>
-                                </div>
-                                <div class="activity-text">
-                                    <div class="activity-tilte-head headline ul-li">
-                                        <h3><a href="#" title="Venice City Tour">Venice City Tour</a></h3>
-                                        <div class="activity-features">
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-clock"></i></div>
-
-
-                                                6 hours
-
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-map"></i></div><a href="#">Venice</a>
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-car"></i></div>Pick-up
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-running"></i></div>Skip Line
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="activity-agent clearfix">
-                                        <div class="activity-agent-img float-left">
-                                            <img width="150" height="150"
-                                                src="{{asset('assets/uploads/2021/12/agent-5-150x150.jpg')}}"
-                                                class="author-img wp-post-image" alt="" loading="lazy" />
-                                        </div>
-                                        <div class="activity-agent-text">
-                                            <h4><a href="#">Robert
-                                                    Rich</a></h4>
-                                            <span>Demo Travel Inc</span>
-                                        </div>
-                                        <div class="activity-btn float-right">
-                                            <a href="#"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item grid-size-25 adventure-tours">
-
-
-
-
-                            <div class="activity-card">
-                                <div class="activity-img position-relative">
-                                    <span class="price-badge">$ 80</span>
-                                    <img width="420" height="280"
-                                        src="{{asset('assets/uploads/2021/12/activity37.jpg')}}" class=" wp-post-image"
-                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><a href="#"><i
-                                                class="fas fa-heart"></i></a></span>
-                                </div>
-                                <div class="activity-text">
-                                    <div class="activity-tilte-head headline ul-li">
-                                        <h3><a href="#" title="Doge Palace Ticket">Doge Palace Ticket</a></h3>
-                                        <div class="activity-features">
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-clock"></i></div>
-
-
-                                                2 hours
-
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-map"></i></div><a href="#">Venice</a>
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-credit-card"></i></div>Easy Cancel
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-running"></i></div>Skip Line
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="activity-agent clearfix">
-                                        <div class="activity-agent-img float-left">
-                                            <img width="150" height="150"
-                                                src="{{asset('assets/uploads/2021/12/agent-5-150x150.jpg')}}"
-                                                class="author-img wp-post-image" alt="" loading="lazy" />
-                                        </div>
-                                        <div class="activity-agent-text">
-                                            <h4><a href="#">Robert
-                                                    Rich</a></h4>
-                                            <span>Demo Travel Inc</span>
-                                        </div>
-                                        <div class="activity-btn float-right">
-                                            <a href="#"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item grid-size-25 sightseeing-tours">
-
-
-
-
-                            <div class="activity-card">
-                                <div class="activity-img position-relative">
-                                    <span class="price-badge">$ 40</span>
-                                    <img width="420" height="280"
-                                        src="{{asset('assets/uploads/2021/12/activity35.jpg')}}" class=" wp-post-image"
-                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><a href="#"><i
-                                                class="fas fa-heart"></i></a></span>
-                                </div>
-                                <div class="activity-text">
-                                    <div class="activity-tilte-head headline ul-li">
-                                        <h3><a href="#" title="Statue of Liberty Ferry">Statue of Liberty Ferry</a></h3>
-                                        <div class="activity-features">
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-clock"></i></div>
-
-
-                                                2 hours
-
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-map"></i></div><a href="#">New
-                                                    York</a>
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-credit-card"></i></div>Easy Cancel
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-car"></i></div>Pick-up
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="activity-agent clearfix">
-                                        <div class="activity-agent-img float-left">
-                                            <img width="150" height="150"
-                                                src="{{asset('assets/uploads/2021/12/agent-3-150x150.jpg')}}"
-                                                class="author-img wp-post-image" alt="" loading="lazy" />
-                                        </div>
-                                        <div class="activity-agent-text">
-                                            <h4><a href="#">Brian
-                                                    Mullen</a></h4>
-                                            <span>Demo Travel Inc</span>
-                                        </div>
-                                        <div class="activity-btn float-right">
-                                            <a href="#"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid-item grid-size-25 sightseeing-tours">
-
-
-
-
-                            <div class="activity-card">
-                                <div class="activity-img position-relative">
-                                    <span class="price-badge">$ 60</span>
-                                    <img width="420" height="280"
-                                        src="{{asset('assets/uploads/2021/12/activity34.jpg')}}" class=" wp-post-image"
-                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><a href="#"><i
-                                                class="fas fa-heart"></i></a></span>
-                                </div>
-                                <div class="activity-text">
-                                    <div class="activity-tilte-head headline ul-li">
-                                        <h3><a href="#" title="Venice: Gondola Ride">Venice: Gondola Ride</a></h3>
-                                        <div class="activity-features">
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-clock"></i></div>
-
-
-                                                2 hours
-
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-map"></i></div><a href="#">Venice</a>
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-credit-card"></i></div>Easy Cancel
-                                            </div>
-                                            <div class="icon-text">
-                                                <div class="icon"><i class="fas fa-running"></i></div>Skip Line
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="activity-agent clearfix">
-                                        <div class="activity-agent-img float-left">
-                                            <img width="150" height="150"
-                                                src="{{asset('assets/uploads/2021/12/agent-4-150x150.jpg')}}"
-                                                class="author-img wp-post-image" alt="" loading="lazy" />
-                                        </div>
-                                        <div class="activity-agent-text">
-                                            <h4><a href="#">Anita
-                                                    May</a></h4>
-                                            <span>Example Travel Inc</span>
-                                        </div>
-                                        <div class="activity-btn float-right">
-                                            <a href="#"><i class="fas fa-arrow-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                               </div>
+                            </div></a>
+                        {% endfor %}
+                        
+                        
                     </div>
                     <div class="activity-more-btn text-center">
                         <a href="#">More Activities<i class="fas fa-sync-alt"></i></a>

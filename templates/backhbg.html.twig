@@ -1,0 +1,40 @@
+{% extends 'baseBack.html.twig'%}
+
+
+{% block body %}
+
+
+{% for hebergement in hebergements %}
+
+
+
+                                           <tr>
+                                           <div class="flex flex-col items-center rounded-16 mb-4 md:my-2 md:mx-2 pb-5 text-center bg-white w-full xl:w-[360px] lg:w-[360px] md:w-[280px] sm:w-[370px] shadow-medium">
+
+                                            <img role="none" class="image m-w-full h-auto object-contain blur-[10px] w-full rounded-16" alt="OQEE by Free" loading="eager" <img style="width:100px;height:100px;" src="{{ asset('uploads/restaurant/' ~ hebergement.image) }}" class="img-fluid rounded-circle" alt="">
+                                            <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red">INCLUS</p>
+                                               {# <td class="text-center"><img style="width:100px;height:100px;" src="{{ asset('uploads/restaurant/' ~ hebergement.image) }}" class="img-fluid rounded-circle" alt=""></td> #}
+                                                
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><tr><td class="text-center">{{ hebergement.nom}}</td></tr></p>
+                                                
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><tr><td class="text-center">{{ hebergement.city }}</td></tr></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.dateAjout ? hebergement.dateAjout|date('d/m/y') : '' }}</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.adress }}</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.nomHotel }}</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.nbChambres }}</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.nbSuites }}</td></p>
+                                                {% if hebergement.piscine == 1 %}
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">YES</td></p>
+                                                {% else %}
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">NO</td></p>
+                                                {% endif %}
+                                                <td class="text-center"><a type="button" href="{{ path('edithbg', {'id': hebergement.idhbg}) }}" class="btn btn-rounded btn-outline-warning">Modifier</a></td>
+                                                <td class="text-center"><a type="button" href="{{ path('del_hbg', {'id': hebergement.idhbg}) }}" class="btn btn-rounded btn-outline-danger">Supprimer</a></td>
+                                            </div>
+                                            </tr>
+                                           
+{% endfor %}
+
+
+
+{% endblock %}
