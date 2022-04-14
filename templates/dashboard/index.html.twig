@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="description"
+      content="Chameleon Admin is a modern Bootstrap 4 webapp &amp; admin dashboard html template with a large number of components, elegant design, clean and organized code.">
+<meta name="keywords"
+      content="admin template, Chameleon admin template, dashboard template, gradient admin template, responsive admin template, webapp, eCommerce dashboard, analytic dashboard">
+<meta name="author" content="ThemeSelect">
+
+<title>Hawes Dashboard</title>
+
+ <link rel="apple-touch-icon" href="{{ asset('back-assets/images/ico/apple-icon-120.png') }}">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<!-- BEGIN: Vendor CSS-->
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/vendors/css/vendors.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/vendors/css/forms/toggle/switchery.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/plugins/forms/switch.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/core/colors/palette-switch.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/vendors/css/charts/chartist.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/vendors/css/charts/chartist-plugin-tooltip.css') }}">
+<!-- END: Vendor CSS-->
+
+<!-- BEGIN: Theme CSS-->
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/bootstrap-extended.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/colors.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/components.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/all.min.css') }}">
+
+
+<!-- END: Theme CSS-->
+
+<!-- BEGIN: Page CSS-->
+
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/core/menu/menu-types/vertical-menu.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/core/colors/palette-gradient.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/core/colors/palette-gradient.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/pages/chat-application.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/pages/dashboard-analytics.min.css') }}">
+<link rel="stylesheet" href="{{ asset('back-assets/css/sweetalert2.min.css') }}">
+<!-- END: Page CSS-->
+
+<body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu"
+      data-color="bg-gradient-x-purple-blue" data-col="2-columns">
+
+
+<!-- % include 'BackHeader.html.twig' % -->
+<!-- BEGIN: Header-->
+<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-light">
+    <div class="navbar-wrapper">
+        <div class="navbar-container content">
+            <div class="collapse navbar-collapse show" id="navbar-mobile">
+                <ul class="nav navbar-nav mr-auto float-left">
+                    <li class="nav-item mobile-menu d-md-none mr-auto"><a
+                                class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
+                                    class="ft-menu font-large-1"></i></a></li>
+                    <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle hidden-xs"
+                                                              href="#"><i class="fa fa-bars"></i></a></li>
+
+
+
+
+                </ul>
+                <ul class="nav navbar-nav float-right">
+
+                    <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
+                                                                           data-toggle="dropdown"><i class="fa fa-bell bell-shake"
+                                                                                                     id="notification-navbar-link"></i><span
+                                    class="badge badge-pill badge-sm badge-danger badge-up badge-glow">5</span></a>
+                        <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                            <div class="arrow_box_right">
+                                <li class="dropdown-menu-header">
+                                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span>
+                                    </h6>
+                                </li>
+                                <li class="scrollable-container media-list w-100">
+
+                                    <a href="#">
+                                        <div class="media">
+                                            <div class="media-left align-self-center"><i
+                                                        class="fa fa-heart font-medium-4 mt-2 info"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading info">New Sale</h6><small>
+                                                    <time class="media-meta text-muted"
+                                                          datetime="2015-06-11T18:29:20+08:00">Last month
+                                                    </time>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </li>
+                                <li class="dropdown-menu-footer">
+                                    <a class="dropdown-item info text-right pr-1" href="#">
+                                        Read all
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"
+                                                                   href="#" data-toggle="dropdown"> <span class="avatar avatar-online"><img
+                                        src="{{ asset('images/utilisateurs/' ~ 'Houssem.jpg') }}"
+                                        alt="avatar"></span></a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="arrow_box_right"><a class="dropdown-item" href="#">
+                                    <span class="avatar avatar-online">
+
+                                        <span class="user-name text-bold-700 ml-1">
+                                            hassen chouadah
+                                        </span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Edit
+                                    Profile</a>
+
+                                <a class="dropdown-item" href="#"><i class="fa fa-message"></i> Chats</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i class="fa fa-xmark"></i>
+                                    Logout</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- END: Header-->
+
+
+<!-- BEGIN: Main Menu-->
+<div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true"
+     data-img="{{ asset('back-assets/images/backgrounds/02.jpg') }}">
+    <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+            <li class="nav-item mr-auto"><a class="navbar-brand" href="#"><img class="brand-logo"
+                                                                               alt="Chameleon admin logo" src="{{ asset('back-assets/images/logo/logo.png') }}" />
+                    <h3 class="brand-text">Hawes Dashboard</h3>
+                </a></li>
+            <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
+        </ul>
+    </div>
+    {% block content %}
+    <div class="navigation-background"></div>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_dashboard') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Dashboard</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_home') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">home</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_avis_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Avis</span>
+                </a>
+            </li>
+
+              <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href=" {{ path('app_reclamation_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Reclamation</span>
+                </a>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>
+{% endblock %}
+<!-- END: Main Menu-->
+
+
+
+<div class="app-content content">
+    <div class="content-wrapper">
+{% block body %}
+
+
+
+{% endblock %}
+    </div>
+</div>
+<footer class="footer footer-static footer-light navbar-border navbar-shadow">
+    <div class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span
+                class="float-md-left d-block d-md-inline-block">2022 &copy; Copyright <a class="text-bold-800 grey darken-2"
+                                                                                         href="https://themeselection.com/" target="_blank">Hawes Voyage</a></span>
+        <ul class="list-inline float-md-right d-block d-md-inline-blockd-none d-lg-block mb-0">
+            <li class="list-inline-item"><a class="my-1" href="#" target="_blank">
+                    Support</a></li>
+        </ul>
+    </div>
+</footer>
+<!-- END: Footer-->
+
+
+<script src="https://use.fontawesome.com/0ccd703e9f.js"></script>
+
+
+
+<script src="{{ asset('back-assets/vendors/js/vendors.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('back-assets/vendors/js/forms/toggle/switchery.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('back-assets/js/scripts/forms/switch.min.js') }}" type="text/javascript"></script>
+<!-- BEGIN Vendor JS-->
+
+<!-- BEGIN: Page Vendor JS-->
+<script src="{{ asset('back-assets/vendors/js/charts/chartist.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('back-assets/vendors/js/charts/chartist-plugin-tooltip.min.js') }}" type="text/javascript"></script>
+<!-- END: Page Vendor JS-->
+
+<!-- BEGIN: Theme JS-->
+<script src="{{ asset('back-assets/js/core/app-menu.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('back-assets/js/core/app.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('back-assets/js/scripts/customizer.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('back-assets/vendors/js/jquery.sharrre.js') }}" type="text/javascript"></script>
+<!-- END: Theme JS-->
+
+<!-- BEGIN: Page JS-->
+<script src="{{ asset('back-assets/js/scripts/pages/dashboard-analytics.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('back-assets/js/sweetalert2.min.js') }}"></script>
+
+{% block javascripts %}
+
+{% endblock %}
+</body>
+
+
+       
+    
+

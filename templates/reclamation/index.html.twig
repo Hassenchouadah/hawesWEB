@@ -1,0 +1,92 @@
+{% extends 'dashboard/index.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+
+
+
+
+
+   
+{% block content %}
+<div class="navigation-background"></div>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_dashboard') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Dashboard</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_home') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">home</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_avis_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Avis</span>
+                </a>
+            </li>
+
+              <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href=" {{ path('app_reclamation_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Reclamation</span>
+                </a>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+{% block body %}
+    <h1>Reclamation</h1>
+<br>
+
+<br>
+
+    <table class="table">
+        <thead>
+            <tr>
+              
+                <th>Email</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+             
+                <td>{{ reclamation.email }}</td>
+                <td>{{ reclamation.description }}</td>
+                <td>
+                    <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}">show</a>
+                   {#} <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">Modifier</a>{#}
+                   <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">Modifier</a>
+                       {{ include('reclamation/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}

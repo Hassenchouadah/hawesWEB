@@ -1,4 +1,7 @@
 {
+    "composer/package-versions-deprecated": {
+        "version": "1.11.99.5"
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {
@@ -21,7 +24,7 @@
         "version": "3.2.2"
     },
     "doctrine/dbal": {
-        "version": "3.3.5"
+        "version": "2.13.8"
     },
     "doctrine/deprecations": {
         "version": "v0.5.3"
@@ -68,13 +71,13 @@
         "version": "1.2.3"
     },
     "doctrine/migrations": {
-        "version": "3.5.0"
+        "version": "3.3.2"
     },
     "doctrine/orm": {
-        "version": "2.11.2"
+        "version": "2.10.5"
     },
     "doctrine/persistence": {
-        "version": "2.4.1"
+        "version": "2.5.0"
     },
     "doctrine/sql-formatter": {
         "version": "1.1.2"
@@ -561,6 +564,15 @@
             "./config/routes/dev/web_profiler.yaml"
         ]
     },
+    "symfony/web-server-bundle": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
+        }
+    },
     "symfony/yaml": {
         "version": "v4.4.37"
     },
@@ -571,7 +583,7 @@
         "version": "v3.3.8"
     },
     "twig/twig": {
-        "version": "v3.3.9"
+        "version": "v3.3.10"
     },
     "webmozart/assert": {
         "version": "1.10.0"
