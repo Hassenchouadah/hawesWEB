@@ -1,0 +1,212 @@
+{% extends 'baseBack.html.twig' %}
+
+
+{% block body %}
+        <div style="height: 284px;" class="content-wrapper-before"></div>
+        <div class="content-header row">
+        </div>
+        <div class="content-body"><div id="user-profile">
+                <div class="row">
+                    <div class="col-sm-12 col-xl-8">
+                        <div class="media d-flex m-1 ">
+                            <div class="align-left p-1">
+                                <a href="#" class="profile-image">
+                                    <img src="{{ asset('images/utilisateurs/'~user.image) }}" class="rounded-circle img-border height-100" alt="Card image">
+                                </a>
+                            </div>
+                            <div class="media-body text-left  mt-1">
+                                <h3 class="font-large-1 white">{{ user.prenomUser~" "~user.nomUser }}
+                                    <span class="font-medium-1 white">({{ user.role }})</span>
+                                </h3>
+                                <p class="white">
+                                    <i class="fa fa-map-marker"> </i> {{ user.adresseUser }} </p>
+                                <p class="white text-bold-300 d-none d-sm-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sed odio risus. Integer sit amet dolor elit. Suspendisse
+                                    ac neque in lacus venenatis convallis. Sed eu lacus odio</p>
+                                <ul class="list-inline">
+                                    <li class="pr-1 line-height-1">
+                                        <a href="#" class="font-medium-4 white ">
+                                            <span class="fa fa-facebook"></span>
+                                        </a>
+                                    </li>
+                                    <li class="pr-1 line-height-1">
+                                        <a href="#" class="font-medium-4 white ">
+                                            <span class="fa fa-twitter"></span>
+                                        </a>
+                                    </li>
+                                    <li class="pr-1 line-height-1">
+                                        <a href="#" class="font-medium-4 white ">
+                                            <span class="fa fa-instagram"></span>
+                                        </a>
+                                    </li>
+                                    <li class="pr-1 line-height-1">
+                                        <a href="#" class="font-medium-4 white ">
+                                            <span class="fa fa-github"></span>
+                                        </a>
+                                    </li>
+                                    <li class="line-height-1">
+                                        <a href="#" class="font-medium-4 white ">
+                                            <span class="fa fa-twitch"></span>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-5 col-md-12">
+                        <div class="card">
+                            <div class="card-header pb-0">
+                                <div class="card-title-wrap bar-primary">
+                                    <div class="card-title">Contact</div>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body p-0 pt-0 pb-1">
+                                    <ul>
+                                        <li>
+                                            <strong>Adresse :</strong>
+                                            <i class="fa fa-map-marker"></i> {{ user.adresseUser }}
+                                        </li>
+
+                                        <li>
+                                            <strong>Telephone :</strong>
+                                            {{ user.telUser }}
+                                        </li>
+
+                                        <li>
+                                            <strong>Email :</strong>
+                                            {{ user.emailUser }}
+                                        </li>
+                                        <li>
+                                            <strong>voiture :</strong>
+                                            {{ user.voiture }}
+                                        </li>
+                                       
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-7 col-md-12">
+                        <!--Project Timeline div starts-->
+                        <div id="timeline">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title-wrap bar-primary">
+                                        <div class="card-title">Modifier profile</div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-block">
+                                        {{ form_start(userform) }}
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="firstName2">Nom :</label>
+                                                    {{ form_widget(userform.nomUser, { 'attr' : { 'class' : 'form-control' } }) }}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="lastName2">Prenom :</label>
+                                                    {{ form_widget(userform.prenomUser, { 'attr' : { 'class' : 'form-control' } }) }}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="lastName2">Telephone :</label>
+                                                    {{ form_widget(userform.telUser, { 'attr' : { 'class' : 'form-control' } }) }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="firstName2">Email :</label>
+                                                    {{ form_widget(userform.emailUser, { 'attr' : { 'class' : 'form-control' } }) }}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="lastName2">mot de passe :</label>
+                                                    {{ form_widget(userform.mdpUser, { 'attr' : { 'class' : 'form-control' } }) }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="firstName2">Adresse :</label>
+                                                    {{ form_widget(userform.adresseUser, { 'attr' : { 'class' : 'form-control' } }) }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="firstName2">CIN :</label>
+                                                    {{ form_widget(userform.cin, { 'attr' : { 'class' : 'form-control' } }) }}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="lastName2">Voiture :</label>
+                                                    {{ form_widget(userform.voiture, { 'attr' : { 'class' : 'form-control' } }) }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <fieldset class="form-group">
+                                                    <label for="lastName2">Image :</label>
+                                                
+                                                        {{ form_widget(userform.image, { 'attr' : { 'class' : 'form-control' } }) }}
+                                                    
+                                                </fieldset>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div style="text-align-last: right;" class="col-12">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa fa-edit"></i>
+                                                    Modifier
+                                                </button>
+                                            </div>
+
+                                        </div>
+
+                                        {{ form_end(userform) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Project Timeline div ends-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+{% endblock %}
+
+
+

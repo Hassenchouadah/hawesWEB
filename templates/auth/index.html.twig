@@ -1,16 +1,133 @@
-{% extends 'baseFront.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 
 
 {% block body %}
 
-<div id="tours_widget-7" class="widget widget_tours_widget">
+    <div class="row match-height">
+        <div class="col-12">
+            <h5 class="card-title text-bold-700 my-2">Liste des utilisateurs</h5>
+            <div class="card">
+                <div class="card-content">
+                    <div id="recent-projects" class="media-list position-relative">
+                        <div class="table-responsive">
+                            <table class="table table-padded table-xl mb-0" id="recent-project-table">
+                                <thead>
+                                <tr>
+                                    <th class="border-top-0">Nom et Prenom</th>
+                                   
+                                    <th class="border-top-0">Contact</th>
+                                    <th class="border-top-0">Role</th>
 
-<section id="tour" class="activity-section">
-            <div class="container">
-                hhhhh
+                                    <th class="border-top-0">Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td class="text-truncate align-middle">
+                                            <a href="{{ path('admin_profile',{'id':user.id}) }}">
+                                                <img style="width: 50px;height: 50px;border-radius: 7px;" src="{{ asset('images/utilisateurs/' ~ user.image) }}" alt="avatar">
+                                                {{ user.prenomUser~" "~user.nomUser }}
+                                            </a>
+                                        </td>
+
+                                        
+
+                                        <td class="text-truncate pb-0">
+                                            <span>{{ user.telUser}}</span>
+                                            <p style="margin-bottom: 0;" class="font-small-2 text-muted">{{ user.emailUser }}</p>
+                                            <div class="d-flex">
+                                                <i class="fa fa-map-marker"></i>&nbsp; <p class="font-small-2 text-muted">{{ user.adresseUser }}</p>
+                                            </div>
+                                        </td>
+
+                                        <td class="text-truncate pb-0">
+                                            <span>{{ user.role}}</span>
+                                        </td>
+
+
+                                            <td class="text-truncate pb-0">
+                                                <a href="{{ path('admin_messages',{'friendId':user.id}) }}" class="btn btn-outline-primary">
+                                                    <i class="fa fa-paper-plane"></i>
+                                                </a>
+                                                {% if user.id!=1 %}
+                                                    {% if user.role == "User"  %}
+                                                        <button onclick="GrantRoleAdmin({{ user.id }})" class="btn btn-primary">
+                                                            Accorder l'acces
+                                                        </button>
+                                                    {% else %}
+                                                        <button onclick="removeRoleAdmin({{ user.id }})" class="btn btn-primary">
+                                                            Supprimer l'acces
+                                                        </button>
+                                                    {% endif %}
+                                                
+
+                                                    <button class="btn btn-danger" href="#">
+                                                        Bloquer
+                                                    </button>
+                                               {% endif %}
+
+
+                                                </td>
+
+
+
+
+
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-<section
+        </div>
+    </div>
 
-</div>
+{% endblock %}
+
+{% block javascripts %}
+
+
+    <script type="text/javascript">
+
+        function GrantRoleAdmin(userId) {
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Grant access !'
+            }).then((result) => {
+                console.log(result)
+                if (result.isConfirmed) {
+                    window.location.href = "grantRoleAdmin/"+userId;
+                }
+            })
+            //RoleModal
+        }
+
+        function removeRoleAdmin(userId){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, remove access !'
+            }).then((result) => {
+                console.log(result)
+                if (result.isConfirmed) {
+                    window.location.href = "removeRoleAdmin/"+userId;
+                }
+            })
+        }
+    </script>
 
 {% endblock %}

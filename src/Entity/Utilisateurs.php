@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UtilisateursRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert ;
 /**
  * @ORM\Entity(repositoryClass=UtilisateursRepository::class)
  */
@@ -16,59 +16,79 @@ class Utilisateurs
      * @ORM\Column(type="integer")
      */
     private $id;
+    
 
     /**
      * @ORM\Column(type="string", length=255)
+     *@Assert\NotBlank(message="NSC is required")
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 8,
+     *      minMessage = "Votre numero de telephone doit contenir exactement 8 chiffres",
+     *      maxMessage = "Votre numero de telephone doit contenir exactement 8 chiffres"
+     * )
      */
     private $cin;
+ 
 
     /**
      * @ORM\Column(type="string", length=255)
+     *@Assert\NotBlank(message="NSC is required")
      */
+     
     private $nomUser;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="NSC is required")
      */
     private $prenomUser;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="NSC is required")
      */
     private $telUser;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="NSC is required")
      */
     private $adresseUser;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="NSC is required")
      */
     private $mdpUser;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="NSC is required")
      */
     private $role;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="NSC is required")
      */
     private $emailUser;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="NSC is required")
      */
     private $voiture;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="NSC is required")
      */
     private $isVerified;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="NSC is required")
      */
     private $image;
 

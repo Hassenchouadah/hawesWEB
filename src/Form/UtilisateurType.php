@@ -6,6 +6,7 @@ use App\Entity\Utilisateurs;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UtilisateurType extends AbstractType
 {
@@ -17,8 +18,7 @@ class UtilisateurType extends AbstractType
             ->add('prenomUser')
             ->add('telUser')
             ->add('adresseUser')
-            ->add('mdpUser')
-            ->add('role')
+            ->add('mdpUser',PasswordType::class)
             ->add('emailUser')
             ->add('voiture')
             ->add('image')

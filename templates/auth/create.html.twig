@@ -29,59 +29,62 @@
                 <div class="sign-wrapper white-bg">
                     <div class="sign-form">
 
-                        {{ form_start(userform) }}
+                        {{ form_start(userform, {'attr':{'novalidate':'novalidate'}}) }}
                             <div class="sign-input-wrapper">
                                 <h5>CIN</h5>
                                 <div class="sign-input">
-                                    {{ form_widget(userform.cin, { 'attr' : { 'placeholder' : 'Please enter a valid cin' } }) }}
+                                    {{ form_widget(userform.cin, { 'attr' : { 'placeholder' : ' enter votre cin' } }) }}
+                                    {{ form_errors(userform.cin) }}
                                 </div>
                             </div>
                             <div class="sign-input-wrapper">
                                 <h5>Nom</h5>
                                 <div class="sign-input">
-                                    {{ form_widget(userform.nomUser, { 'attr' : { 'placeholder' : 'Please enter a valid nom' } }) }}
+                                    {{ form_widget(userform.nomUser, { 'attr' : { 'placeholder' : 'enter votre nom' } }) }}
                                     <i class="far fa-envelope"></i>
+                                     {{ form_errors(userform.nomUser) }}
+
                                 </div>
                             </div>
                             <div class="sign-input-wrapper">
                                 <h5>Prenom</h5>
                                 <div class="sign-input">
-                                    {{ form_widget(userform.prenomUser, { 'attr' : { 'placeholder' : 'Please enter a valid nom' } }) }}
+                                    {{ form_widget(userform.prenomUser, { 'attr' : { 'placeholder' : 'enter votre prenom' } }) }}
+                                    {{form_errors(userform.prenomUser)}}
                                     <i class="far fa-user"></i>
                                 </div>
                             </div>
                             <div class="sign-input-wrapper">
                                 <h5>Telephone</h5>
                                 <div class="sign-input">
-                                     {{ form_widget(userform.telUser, { 'attr' : { 'placeholder' : 'Please enter a valid tel' } }) }}
+                                     {{ form_widget(userform.telUser, { 'attr' : { 'placeholder' : 'enter votre téléphone' } }) }}
+                                     {{form_errors(userform.telUser)}}
                                     <i class="far fa-user"></i>
                                 </div>
                             </div>
                             <div class="sign-input-wrapper">
                                 <h5>Adresse</h5>
                                 <div class="sign-input">
-                                    {{ form_widget(userform.adresseUser, { 'attr' : { 'placeholder' : 'Please enter a valid adresse' } }) }}<i class="fas fa-mobile-alt"></i>
+                                    {{ form_widget(userform.adresseUser, { 'attr' : { 'placeholder' : 'enter votre adresse' } }) }}
+                                    {{form_errors(userform.adresseUser)}}
+                                    <i class="fas fa-mobile-alt"></i>
                                 </div>
                             </div>
                             <div class="sign-input-wrapper">
                                 <h5>Password</h5>
                                 <div class="sign-input">
-                                    {{ form_widget(userform.mdpUser, { 'attr' : { 'placeholder' : 'Please enter a valid password' } }) }}
+                                    {{ form_widget(userform.mdpUser, { 'attr' : { 'placeholder' : 'enter votre password' } }) }}
+                                    {{form_errors(userform.mdpUser)}}
                                     <i class="far fa-clone"></i>
                                 </div>
                             </div>
-                            <div class="sign-input-wrapper">
-                                <h5>Role</h5>
-                                <div class="sign-input">
-                                    {{ form_widget(userform.role, { 'attr' : { 'placeholder' : 'Please enter a valid role' } }) }}
-                                    <i class="far fa-clone"></i>
-                                </div>
-                            </div>
+                            
 
                             <div class="sign-input-wrapper">
                                 <h5>Email</h5>
                                 <div class="sign-input">
-                                    {{ form_widget(userform.emailUser, { 'attr' : { 'placeholder' : 'Please enter a valid email' } }) }}
+                                    {{ form_widget(userform.emailUser, { 'attr' : { 'placeholder' : 'enter votre email' } }) }}
+                                    {{form_errors(userform.emailUser)}}
                                     <i class="far fa-clone"></i>
                                 </div>
                             </div>
@@ -89,7 +92,8 @@
                             <div class="sign-input-wrapper">
                                 <h5>Voiture</h5>
                                 <div class="sign-input">
-                                    {{ form_widget(userform.voiture, { 'attr' : { 'placeholder' : 'Please enter a valid voiture' } }) }}
+                                    {{ form_widget(userform.voiture, { 'attr' : { 'placeholder' : 'enter la marque de votre voiture' } }) }}
+                                    {{form_errors(userform.voiture)}}
                                     <i class="far fa-clone"></i>
                                 </div>
                             </div>
