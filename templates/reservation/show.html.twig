@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+    <h1>Reservation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idres</th>
+                <td>{{ reservation.idres }}</td>
+            </tr>
+            <tr>
+                <th>Idvol</th>
+                <td>{{ reservation.idvol }}</td>
+            </tr>
+            <tr>
+                <th>Valide</th>
+                <td>{{ reservation.valide }}</td>
+            </tr>
+            <tr>
+                <th>Nbpersonne</th>
+                <td>{{ reservation.nbpersonne }}</td>
+            </tr>
+            <tr>
+                <th>Forfait</th>
+                <td>{{ reservation.forfait }}</td>
+            </tr>
+            <tr>
+                <th>Nbchambre</th>
+                <td>{{ reservation.nbchambre }}</td>
+            </tr>
+            <tr>
+                <th>Nbsuite</th>
+                <td>{{ reservation.nbsuite }}</td>
+            </tr>
+            <tr>
+                <th>Datearr</th>
+                <td>{{ reservation.datearr ? reservation.datearr|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Datedep</th>
+                <td>{{ reservation.datedep ? reservation.datedep|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Dateres</th>
+                <td>{{ reservation.dateres ? reservation.dateres|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Deadlineannulation</th>
+                <td>{{ reservation.deadlineannulation ? reservation.deadlineannulation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reservation_index') }}">back to list</a>
+
+    <a href="{{ path('app_reservation_edit', {'idres': reservation.idres}) }}">edit</a>
+
+    {{ include('reservation/_delete_form.html.twig') }}
+{% endblock %}

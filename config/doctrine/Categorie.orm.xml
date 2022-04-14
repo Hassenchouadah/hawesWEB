@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Categorie" table="categorie">
+    <id name="idHbg" association-key="true"/>
+    <field name="etoile" type="integer" column="etoile" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <one-to-one field="idHbg" target-entity="Hebergement" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_hbg" referenced-column-name="id_hbg"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

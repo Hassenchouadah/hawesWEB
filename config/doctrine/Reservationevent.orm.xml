@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="App\Entity\Reservationevent" table="reservationevent">
+    <indexes>
+      <index name="idRes" columns="idRes"/>
+    </indexes>
+    <id name="idresevent" type="integer" column="idResEvent">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idevent" type="integer" column="idEvent" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">NULL</option>
+      </options>
+    </field>
+    <many-to-one field="idres" target-entity="Reservation" fetch="LAZY">
+      <join-columns>
+        <join-column name="idRes" referenced-column-name="idRes"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

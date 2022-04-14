@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+    <h1>Paiement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idpmt</th>
+                <td>{{ paiement.idpmt }}</td>
+            </tr>
+            <tr>
+                <th>Datepmt</th>
+                <td>{{ paiement.datepmt ? paiement.datepmt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Methode</th>
+                <td>{{ paiement.methode }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ paiement.montant }}</td>
+            </tr>
+            <tr>
+                <th>Canceled</th>
+                <td>{{ paiement.canceled }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_paiement_index') }}">back to list</a>
+
+    <a href="{{ path('app_paiement_edit', {'idpmt': paiement.idpmt}) }}">edit</a>
+
+    {{ include('paiement/_delete_form.html.twig') }}
+{% endblock %}

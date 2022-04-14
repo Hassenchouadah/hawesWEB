@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thebergement index{% endblock %}
+
+{% block body %}
+    <h1>Thebergement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdHbg</th>
+                <th>Nom</th>
+                <th>City</th>
+                <th>DateAjout</th>
+                <th>Adress</th>
+                <th>NomHotel</th>
+                <th>NbChambres</th>
+                <th>NbSuites</th>
+                <th>Piscine</th>
+                <th>Image</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for thebergement in thebergements %}
+            <tr>
+                <td>{{ thebergement.idHbg }}</td>
+                <td>{{ thebergement.nom }}</td>
+                <td>{{ thebergement.city }}</td>
+                <td>{{ thebergement.dateAjout ? thebergement.dateAjout|date('Y-m-d') : '' }}</td>
+                <td>{{ thebergement.adress }}</td>
+                <td>{{ thebergement.nomHotel }}</td>
+                <td>{{ thebergement.nbChambres }}</td>
+                <td>{{ thebergement.nbSuites }}</td>
+                <td>{{ thebergement.piscine }}</td>
+                <td>{{ thebergement.image }}</td>
+                <td>{{ thebergement.prix }}</td>
+                <td>
+                    <a href="{{ path('app_thebergement_show', {'idHbg': thebergement.idHbg}) }}">show</a>
+                    <a href="{{ path('app_thebergement_edit', {'idHbg': thebergement.idHbg}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_thebergement_new') }}">Create new</a>
+{% endblock %}
