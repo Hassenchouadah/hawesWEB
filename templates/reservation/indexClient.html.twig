@@ -1,0 +1,53 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Reservation index{% endblock %}
+
+{% block body %}
+    <h1>Reservation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idres</th>
+                <th>Idvol</th>
+                <th>Valide</th>
+                <th>Nbpersonne</th>
+                <th>Forfait</th>
+                <th>Nbchambre</th>
+                <th>Nbsuite</th>
+                <th>Datearr</th>
+                <th>Datedep</th>
+                <th>Dateres</th>
+                <th>Deadlineannulation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.idres }}</td>
+                <td>{{ reservation.idvol }}</td>
+                <td>{{ reservation.valide }}</td>
+                <td>{{ reservation.nbpersonne }}</td>
+                <td>{{ reservation.forfait }}</td>
+                <td>{{ reservation.nbchambre }}</td>
+                <td>{{ reservation.nbsuite }}</td>
+                <td>{{ reservation.datearr ? reservation.datearr|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.datedep ? reservation.datedep|date('Y-m-d') : '' }}</td>
+                <td>{{ reservation.dateres ? reservation.dateres|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reservation.deadlineannulation ? reservation.deadlineannulation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_reservation_show', {'idres': reservation.idres}) }}">show</a>
+                    <a href="{{ path('app_reservation_edit', {'idres': reservation.idres}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reservation_new') }}">Create new</a>
+{% endblock %}

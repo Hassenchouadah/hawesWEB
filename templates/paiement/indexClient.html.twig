@@ -1,0 +1,41 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Paiement index{% endblock %}
+
+{% block body %}
+    <h1>Paiement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idpmt</th>
+                <th>Datepmt</th>
+                <th>Methode</th>
+                <th>Montant</th>
+                <th>Canceled</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for paiement in paiements %}
+            <tr>
+                <td>{{ paiement.idpmt }}</td>
+                <td>{{ paiement.datepmt ? paiement.datepmt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ paiement.methode }}</td>
+                <td>{{ paiement.montant }}</td>
+                <td>{{ paiement.canceled }}</td>
+                <td>
+                    <a href="{{ path('app_paiement_show', {'idpmt': paiement.idpmt}) }}">show</a>
+                    <a href="{{ path('app_paiement_edit', {'idpmt': paiement.idpmt}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}

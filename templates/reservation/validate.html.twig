@@ -1,0 +1,75 @@
+
+{% block title %}Séjour chez{% endblock %}
+
+{% block body %}
+    <h1>{{hebergement.nomHotel}}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Cher Client,</th>
+                <td>{{ utilisateur.nomuser }}&nbsp;{{ utilisateur.prenomuser}}</td>
+            </tr>
+            <tr>
+                <th>Identifiant du Réservation </th>
+                <td>{{ reservation.idres }}</td>
+            </tr>
+            <tr>
+                <th>Identifiant du vol </th>
+                <td>{{ reservation.idvol }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de(s) personne(s)  </th>
+                <td>{{ reservation.nbpersonne }}</td>
+            </tr>
+            <tr>
+                <th>Forfait </th>
+                <td>{{ reservation.forfait }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de(s) chambre(s)</th>
+                <td>{{ reservation.nbchambre }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de(s) suite(s)</th>
+                <td>{{ reservation.nbsuite }}</td>
+            </tr>
+            <tr>
+                <th>Date d'Arrivée</th>
+                <td>{{ reservation.datearr ? reservation.datearr|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date de départ</th>
+                <td>{{ reservation.datedep ? reservation.datedep|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date du réservation</th>
+                <td>{{ reservation.dateres ? reservation.dateres|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Deadline d'annulation du réservation</th>
+                <td>{{ reservation.deadlineannulation ? reservation.deadlineannulation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Identifiant du transaction</th>
+                <td>{{ paiement.idpmt }}</td>
+            </tr>
+            <tr>
+                <th>Date du paiement</th>
+                <td>{{ paiement.datepmt ? paiement.datepmt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Méthode</th>
+                <td>{{ paiement.methode }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ paiement.montant }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1 style="padding-left : 190px">
+            <button class="btn">{{ button_label|default('Votre Réservation est validée') }}</button>
+            </h1>
+{% endblock %}

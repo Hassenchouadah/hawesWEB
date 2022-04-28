@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10 mt-4">
+                <h1>Admin Dashboard</h1>
+                <canvas id="myChart">
+                    {{ render_chart(monthlychart) }}
+                </canvas>
+            </div>
+        </div>
+    </div>
+{% endblock %}
