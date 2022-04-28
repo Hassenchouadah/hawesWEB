@@ -47,7 +47,7 @@ class Paiement
      *
      * @ORM\Column(name="canceled", type="integer", nullable=false)
      */
-    private $canceled = '0';
+    private $canceled;
 
     /**
      * @var \Reservation

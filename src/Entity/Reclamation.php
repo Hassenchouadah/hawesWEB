@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Reclamation
  *
- * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="id_hbg", columns={"id_hbg"}), @ORM\Index(name="idUser", columns={"idUser"})})
+ * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="FK_CE606404FE6E88D7", columns={"idUser"}), @ORM\Index(name="id_hbg", columns={"id_hbg"})})
  * @ORM\Entity
  */
 class Reclamation
@@ -33,7 +33,7 @@ class Reclamation
      *
      * @ORM\Column(name="traite", type="integer", nullable=false)
      */
-    private $traite = '0';
+    private $traite;
 
     /**
      * @var \DateTime
@@ -50,16 +50,6 @@ class Reclamation
     private $datetraitrec = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \Hebergement
-     *
-     * @ORM\ManyToOne(targetEntity="Hebergement")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_hbg", referencedColumnName="id_hbg")
-     * })
-     */
-    private $idHbg;
-
-    /**
      * @var \Utilisateurs
      *
      * @ORM\ManyToOne(targetEntity="Utilisateurs")
@@ -68,6 +58,16 @@ class Reclamation
      * })
      */
     private $iduser;
+
+    /**
+     * @var \Hebergement
+     *
+     * @ORM\ManyToOne(targetEntity="Hebergement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_hbg", referencedColumnName="id_hbg")
+     * })
+     */
+    private $idHbg;
 
     public function getIdRec(): ?int
     {
@@ -122,18 +122,6 @@ class Reclamation
         return $this;
     }
 
-    public function getIdHbg(): ?Hebergement
-    {
-        return $this->idHbg;
-    }
-
-    public function setIdHbg(?Hebergement $idHbg): self
-    {
-        $this->idHbg = $idHbg;
-
-        return $this;
-    }
-
     public function getIduser(): ?Utilisateurs
     {
         return $this->iduser;
@@ -142,6 +130,18 @@ class Reclamation
     public function setIduser(?Utilisateurs $iduser): self
     {
         $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    public function getIdHbg(): ?Hebergement
+    {
+        return $this->idHbg;
+    }
+
+    public function setIdHbg(?Hebergement $idHbg): self
+    {
+        $this->idHbg = $idHbg;
 
         return $this;
     }

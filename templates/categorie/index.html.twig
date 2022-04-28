@@ -1,0 +1,33 @@
+{% extends 'baseBack.html.twig'%}
+
+{% block body %}
+    <h1>Categorie </h1>
+
+
+
+
+{% for categorie in categories %}
+
+
+
+                                           <tr>
+                                           <div class="flex flex-col items-center rounded-16 mb-4 md:my-2 md:mx-2 pb-5 text-center bg-white w-full xl:w-[360px] lg:w-[360px] md:w-[280px] sm:w-[370px] shadow-medium">
+
+                                            <section>
+                                            
+                                                
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><tr><td class="text-center">nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ categorie.idHbg.nomHotel}}</td></tr></p>
+                                                
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><tr><td class="text-center">etoile :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{ categorie.etoile }}</td></tr></p>
+                                              
+                                                <td class="text-center"><a type="button" href="{{ path('app_categorie_edit', {'idHbg': categorie.idhbg.idHbg}) }}" class="btn btn-rounded btn-outline-warning">Modifier</a></td>
+                                                <td class="text-center"><a type="button" href="{{ path('app_categorie_delete', {'idHbg': categorie.idhbg.idHbg}) }}" onclick="return confirm('are u sure?')" class="btn btn-rounded btn-outline-danger">Supprimer</a></td>
+                                            </section>
+                                            </div>
+                                            </tr>
+                                           
+{% endfor %}
+
+
+
+{% endblock %}

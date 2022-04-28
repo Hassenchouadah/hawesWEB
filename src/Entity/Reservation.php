@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Reservation
  *
- * @ORM\Table(name="reservation", indexes={@ORM\Index(name="idHebr", columns={"idHebr"}), @ORM\Index(name="idUser", columns={"idUser"})})
+ * @ORM\Table(name="reservation", indexes={@ORM\Index(name="FK_42C84955FE6E88D7", columns={"idUser"}), @ORM\Index(name="FK_42C84955BF74E90", columns={"idHebr"})})
  * @ORM\Entity
  */
 class Reservation
@@ -33,7 +33,7 @@ class Reservation
      *
      * @ORM\Column(name="valide", type="integer", nullable=true)
      */
-    private $valide = '0';
+    private $valide;
 
     /**
      * @var int
@@ -92,16 +92,6 @@ class Reservation
     private $deadlineannulation;
 
     /**
-     * @var \Hebergement
-     *
-     * @ORM\ManyToOne(targetEntity="Hebergement")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="idHebr", referencedColumnName="id_hbg")
-     * })
-     */
-    private $idhebr;
-
-    /**
      * @var \Utilisateurs
      *
      * @ORM\ManyToOne(targetEntity="Utilisateurs")
@@ -110,6 +100,16 @@ class Reservation
      * })
      */
     private $iduser;
+
+    /**
+     * @var \Hebergement
+     *
+     * @ORM\ManyToOne(targetEntity="Hebergement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idHebr", referencedColumnName="id_hbg")
+     * })
+     */
+    private $idhebr;
 
     public function getIdres(): ?int
     {
@@ -236,18 +236,6 @@ class Reservation
         return $this;
     }
 
-    public function getIdhebr(): ?Hebergement
-    {
-        return $this->idhebr;
-    }
-
-    public function setIdhebr(?Hebergement $idhebr): self
-    {
-        $this->idhebr = $idhebr;
-
-        return $this;
-    }
-
     public function getIduser(): ?Utilisateurs
     {
         return $this->iduser;
@@ -256,6 +244,18 @@ class Reservation
     public function setIduser(?Utilisateurs $iduser): self
     {
         $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    public function getIdhebr(): ?Hebergement
+    {
+        return $this->idhebr;
+    }
+
+    public function setIdhebr(?Hebergement $idhebr): self
+    {
+        $this->idhebr = $idhebr;
 
         return $this;
     }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Ticket
  *
- * @ORM\Table(name="ticket", indexes={@ORM\Index(name="idPmt", columns={"idPmt"}), @ORM\Index(name="idRes", columns={"idRes"})})
+ * @ORM\Table(name="ticket", indexes={@ORM\Index(name="idRes", columns={"idRes"}), @ORM\Index(name="idPmt", columns={"idPmt"})})
  * @ORM\Entity
  */
 class Ticket
@@ -26,7 +26,7 @@ class Ticket
      *
      * @ORM\Column(name="deleted", type="integer", nullable=true)
      */
-    private $deleted = '0';
+    private $deleted;
 
     /**
      * @var \Paiement

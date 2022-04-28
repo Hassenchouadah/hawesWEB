@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Avis
  *
- * @ORM\Table(name="avis", indexes={@ORM\Index(name="id_hbg", columns={"id_hbg"}), @ORM\Index(name="idUser", columns={"idUser"})})
+ * @ORM\Table(name="avis", indexes={@ORM\Index(name="FK_8F91ABF0FE6E88D7", columns={"idUser"}), @ORM\Index(name="id_hbg", columns={"id_hbg"})})
  * @ORM\Entity
  */
 class Avis
@@ -43,16 +43,6 @@ class Avis
     private $dateajoutavis = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \Hebergement
-     *
-     * @ORM\ManyToOne(targetEntity="Hebergement")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_hbg", referencedColumnName="id_hbg")
-     * })
-     */
-    private $idHbg;
-
-    /**
      * @var \Utilisateurs
      *
      * @ORM\ManyToOne(targetEntity="Utilisateurs")
@@ -61,6 +51,16 @@ class Avis
      * })
      */
     private $iduser;
+
+    /**
+     * @var \Hebergement
+     *
+     * @ORM\ManyToOne(targetEntity="Hebergement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_hbg", referencedColumnName="id_hbg")
+     * })
+     */
+    private $idHbg;
 
     public function getIdAvis(): ?int
     {
@@ -103,18 +103,6 @@ class Avis
         return $this;
     }
 
-    public function getIdHbg(): ?Hebergement
-    {
-        return $this->idHbg;
-    }
-
-    public function setIdHbg(?Hebergement $idHbg): self
-    {
-        $this->idHbg = $idHbg;
-
-        return $this;
-    }
-
     public function getIduser(): ?Utilisateurs
     {
         return $this->iduser;
@@ -123,6 +111,18 @@ class Avis
     public function setIduser(?Utilisateurs $iduser): self
     {
         $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    public function getIdHbg(): ?Hebergement
+    {
+        return $this->idHbg;
+    }
+
+    public function setIdHbg(?Hebergement $idHbg): self
+    {
+        $this->idHbg = $idHbg;
 
         return $this;
     }

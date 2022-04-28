@@ -2,48 +2,64 @@
 
 namespace App\Entity;
 
-use App\Repository\MessagesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MessagesRepository::class)
+ * Messages
+ *
+ * @ORM\Table(name="messages")
+ * @ORM\Entity
  */
 class Messages
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="sender", type="integer", nullable=false)
      */
     private $sender;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="receiver", type="integer", nullable=false)
      */
     private $receiver;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     *
+     * @ORM\Column(name="message", type="string", length=255, nullable=false)
      */
     private $message;
 
     /**
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="seen", type="integer", nullable=false)
      */
     private $seen;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
      */
     private $created;
 
@@ -64,12 +80,12 @@ class Messages
         return $this;
     }
 
-    public function getReceiver(): ?string
+    public function getReceiver(): ?int
     {
         return $this->receiver;
     }
 
-    public function setReceiver(string $receiver): self
+    public function setReceiver(int $receiver): self
     {
         $this->receiver = $receiver;
 
@@ -123,4 +139,6 @@ class Messages
 
         return $this;
     }
+
+
 }

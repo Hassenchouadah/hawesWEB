@@ -1,18 +1,12 @@
 <?php
 
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Hebergement
- *
  * @ORM\Table(name="hebergement")
  * @ORM\Entity(repositoryClass="App\Repository\HebergementRepository")
  */
-
 class Hebergement
 {
     /**
@@ -28,8 +22,6 @@ class Hebergement
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
-     * @Assert\NotBlank (message="Veuillez remplir ce champs")
-
      */
     private $nom;
 
@@ -37,7 +29,6 @@ class Hebergement
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255, nullable=false)
-     * @Assert\NotBlank (message="Veuillez remplir ce champs")
      */
     private $city;
 
@@ -59,45 +50,40 @@ class Hebergement
      * @var string
      *
      * @ORM\Column(name="nom_hotel", type="string", length=30, nullable=false)
-     * @Assert\NotBlank (message="Veuillez remplir ce champs")
      */
     private $nomHotel;
 
     /**
      * @var int
-     * @Assert\PositiveOrZero
+     *
      * @ORM\Column(name="nb_chambres", type="integer", nullable=false)
-     * @Assert\NotBlank (message="Veuillez remplir ce champs")
      */
     private $nbChambres;
 
     /**
      * @var int
-     * @Assert\PositiveOrZero
+     *
      * @ORM\Column(name="nb_suites", type="integer", nullable=false)
-     * @Assert\NotBlank (message="Veuillez remplir ce champs")
      */
     private $nbSuites;
 
     /**
      * @var int
-     *  @Assert\PositiveOrZero
-     * @Assert\NotBlank (message="Veuillez remplir ce champs")
+     *
      * @ORM\Column(name="piscine", type="integer", nullable=false)
      */
     private $piscine;
 
     /**
      * @var string|null
-     * 
+     *
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 
     /**
      * @var int
-     * @Assert\PositiveOrZero
-     * @Assert\NotBlank (message="Veuillez remplir ce champs")
+     *
      * @ORM\Column(name="prix", type="integer", nullable=false)
      */
     private $prix;

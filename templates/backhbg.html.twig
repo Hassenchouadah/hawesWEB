@@ -1,8 +1,14 @@
 {% extends 'baseBack.html.twig'%}
+{%block head%}
+
+<link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+{% endblock%}
+
 
 
 {% block body %}
-
+<center><div class="m-0 font-semibold text-[100px] lg:text-[120.6px] text-red"><a type="button" href="{{ path('newhbg') }}" class="btn btn-rounded btn-outline-warning">Ajouter</a>
+<a type="button" href="{{ path('pdf')}}" class="btn btn-rounded btn-outline-dark">imprimer pdf</a></div></center>
 
 {% for hebergement in hebergements %}
 
@@ -11,30 +17,60 @@
                                            <tr>
                                            <div class="flex flex-col items-center rounded-16 mb-4 md:my-2 md:mx-2 pb-5 text-center bg-white w-full xl:w-[360px] lg:w-[360px] md:w-[280px] sm:w-[370px] shadow-medium">
 
-                                            <img role="none" class="image m-w-full h-auto object-contain blur-[10px] w-full rounded-16" alt="OQEE by Free" loading="eager" <img style="width:100px;height:100px;" src="{{ asset('uploads/restaurant/' ~ hebergement.image) }}" class="img-fluid rounded-circle" alt="">
-                                            <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red">INCLUS</p>
-                                               {# <td class="text-center"><img style="width:100px;height:100px;" src="{{ asset('uploads/restaurant/' ~ hebergement.image) }}" class="img-fluid rounded-circle" alt=""></td> #}
+                                            <section><img role="none" class="image m-w-full h-auto object-contain blur-[10px] w-full rounded-16" style="float: left" loading="eager" <img style="width:100px;height:100px;" src="{{ asset('uploads/' ~ hebergement.image) }}"  class="img-fluid rounded-circle" alt="">
+                                            
                                                 
-                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><tr><td class="text-center">{{ hebergement.nom}}</td></tr></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><tr><td class="text-center">nom :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ hebergement.nom}}</td></tr></p>
                                                 
-                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><tr><td class="text-center">{{ hebergement.city }}</td></tr></p>
-                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.dateAjout ? hebergement.dateAjout|date('d/m/y') : '' }}</td></p>
-                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.adress }}</td></p>
-                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.nomHotel }}</td></p>
-                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.nbChambres }}</td></p>
-                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">{{ hebergement.nbSuites }}</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><tr><td class="text-center">city :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{ hebergement.city }}</td></tr></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">date ajout :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     {{ hebergement.dateAjout ? hebergement.dateAjout|date('d/m/y') : '' }}</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">adress : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    {{ hebergement.adress }}</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">nom Hotel :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      {{ hebergement.nomHotel }}</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">nombre de chambre :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      {{ hebergement.nbChambres }}</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">nombres de suite :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       {{ hebergement.nbSuites }}</td></p>
                                                 {% if hebergement.piscine == 1 %}
-                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">YES</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">avec piscine</td></p>
                                                 {% else %}
-                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">NO</td></p>
+                                                <p class="m-0 font-semibold text-[10px] lg:text-[12.6px] text-red"><td class="text-center">pas de piscine</td></p>
                                                 {% endif %}
                                                 <td class="text-center"><a type="button" href="{{ path('edithbg', {'id': hebergement.idhbg}) }}" class="btn btn-rounded btn-outline-warning">Modifier</a></td>
-                                                <td class="text-center"><a type="button" href="{{ path('del_hbg', {'id': hebergement.idhbg}) }}" class="btn btn-rounded btn-outline-danger">Supprimer</a></td>
+                                                <td class="text-center"><a type="button" href="{{ path('send_hbg', {'id': hebergement.idhbg}) }}" class="btn btn-rounded btn-outline-primary">send mail</a></td>
+                                                <td class="text-center"><a type="button" href="{{ path('del_hbg', {'id': hebergement.idhbg}) }}" onclick="return confirm('are u sure?')" class="btn btn-rounded btn-outline-danger">Supprimer</a></td>
+                                                
+
+                                            </section>
                                             </div>
                                             </tr>
                                            
 {% endfor %}
 
+<style>
+      .img-container {
+        text-align: center;
+      }
+    </style>
+
+                    <center>
+                         <div class="img-container">
+                              {{ knp_pagination_render(hebergements,'@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',{'rounded': true,'size': 'small' }) }}
+                                       
+                         </div>
+                          
+                    </center>
+
+                    {%block javascripts%}
+
+                     <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+
+
+                    {%endblock%}
+                        {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+                    
+
 
 
 {% endblock %}
+  
