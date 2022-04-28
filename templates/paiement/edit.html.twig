@@ -1,8 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 
 {% block title %}Edit Paiement{% endblock %}
 
 {% block body %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
     <h1>Edit Paiement</h1>
 
     {{ include('paiement/_form.html.twig', {'button_label': 'Update'}) }}

@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Reservation
  *
  * @ORM\Table(name="reservation", indexes={@ORM\Index(name="idHebr", columns={"idHebr"}), @ORM\Index(name="idUser", columns={"idUser"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ReservationRepository")
  */
 class Reservation
 {
@@ -222,13 +222,14 @@ class Reservation
         return $this->datearr;
     }
 
+
     public function setDatearr(\DateTimeInterface $datearr): self
     {
         $this->datearr = $datearr;
 
         return $this;
     }
-
+    
     public function getDatedep(): ?\DateTimeInterface
     {
         return $this->datedep;
@@ -291,5 +292,4 @@ class Reservation
     public function __toString() {
         return (String) $this->idres;
     }
-
 }

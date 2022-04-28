@@ -2,99 +2,91 @@
 
 namespace App\Entity;
 
-use App\Repository\UtilisateursRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert ;
+
 /**
- * @ORM\Entity(repositoryClass=UtilisateursRepository::class)
+ * Utilisateurs
+ *
+ * @ORM\Table(name="utilisateurs")
+ * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
  */
 class Utilisateurs
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="idUser", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
-    
+    private $iduser;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *@Assert\NotBlank(message="NSC is required")
-     * @Assert\Length(
-     *      min = 8,
-     *      max = 8,
-     *      minMessage = "Votre numero de telephone doit contenir exactement 8 chiffres",
-     *      maxMessage = "Votre numero de telephone doit contenir exactement 8 chiffres"
-     * )
+     * @var string
+     *
+     * @ORM\Column(name="cin", type="string", length=8, nullable=false)
      */
     private $cin;
- 
 
     /**
-     * @ORM\Column(type="string", length=255)
-     *@Assert\NotBlank(message="NSC is required")
+     * @var string
+     *
+     * @ORM\Column(name="nomUser", type="string", length=255, nullable=false)
      */
-     
-    private $nomUser;
+    private $nomuser;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="NSC is required")
+     * @var string
+     *
+     * @ORM\Column(name="prenomUser", type="string", length=255, nullable=false)
      */
-    private $prenomUser;
+    private $prenomuser;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="NSC is required")
+     * @var string
+     *
+     * @ORM\Column(name="telUser", type="string", length=25, nullable=false)
      */
-    private $telUser;
+    private $teluser;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="NSC is required")
+     * @var string
+     *
+     * @ORM\Column(name="adresseUser", type="string", length=255, nullable=false)
      */
-    private $adresseUser;
+    private $adresseuser;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="NSC is required")
+     * @var string
+     *
+     * @ORM\Column(name="mdpUser", type="string", length=255, nullable=false)
      */
-    private $mdpUser;
+    private $mdpuser;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="NSC is required")
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=25, nullable=false)
      */
     private $role;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="NSC is required")
+     * @var string
+     *
+     * @ORM\Column(name="emailUser", type="string", length=255, nullable=false)
      */
-    private $emailUser;
+    private $emailuser;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="NSC is required")
-     */
-    private $voiture;
-
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="NSC is required")
-     */
-    private $isVerified;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="NSC is required")
-     */
-    private $image;
-
-    public function getId(): ?int
+    public function getIduser(): ?int
     {
-        return $this->id;
+        return $this->iduser;
+    }
+
+    public function setIduser(string $iduser): self
+    {
+        $this->iduser = $iduser;
+
+        return $this;
     }
 
     public function getCin(): ?string
@@ -109,62 +101,62 @@ class Utilisateurs
         return $this;
     }
 
-    public function getNomUser(): ?string
+    public function getNomuser(): ?string
     {
-        return $this->nomUser;
+        return $this->nomuser;
     }
 
-    public function setNomUser(string $nomUser): self
+    public function setNomuser(string $nomuser): self
     {
-        $this->nomUser = $nomUser;
+        $this->nomuser = $nomuser;
 
         return $this;
     }
 
-    public function getPrenomUser(): ?string
+    public function getPrenomuser(): ?string
     {
-        return $this->prenomUser;
+        return $this->prenomuser;
     }
 
-    public function setPrenomUser(string $prenomUser): self
+    public function setPrenomuser(string $prenomuser): self
     {
-        $this->prenomUser = $prenomUser;
+        $this->prenomuser = $prenomuser;
 
         return $this;
     }
 
-    public function getTelUser(): ?string
+    public function getTeluser(): ?string
     {
-        return $this->telUser;
+        return $this->teluser;
     }
 
-    public function setTelUser(string $telUser): self
+    public function setTeluser(string $teluser): self
     {
-        $this->telUser = $telUser;
+        $this->teluser = $teluser;
 
         return $this;
     }
 
-    public function getAdresseUser(): ?string
+    public function getAdresseuser(): ?string
     {
-        return $this->adresseUser;
+        return $this->adresseuser;
     }
 
-    public function setAdresseUser(string $adresseUser): self
+    public function setAdresseuser(string $adresseuser): self
     {
-        $this->adresseUser = $adresseUser;
+        $this->adresseuser = $adresseuser;
 
         return $this;
     }
 
-    public function getMdpUser(): ?string
+    public function getMdpuser(): ?string
     {
-        return $this->mdpUser;
+        return $this->mdpuser;
     }
 
-    public function setMdpUser(string $mdpUser): self
+    public function setMdpuser(string $mdpuser): self
     {
-        $this->mdpUser = $mdpUser;
+        $this->mdpuser = $mdpuser;
 
         return $this;
     }
@@ -181,51 +173,19 @@ class Utilisateurs
         return $this;
     }
 
-    public function getEmailUser(): ?string
+    public function getEmailuser(): ?string
     {
-        return $this->emailUser;
+        return $this->emailuser;
     }
 
-    public function setEmailUser(string $emailUser): self
+    public function setEmailuser(string $emailuser): self
     {
-        $this->emailUser = $emailUser;
+        $this->emailuser = $emailuser;
 
         return $this;
     }
-
-    public function getVoiture(): ?string
-    {
-        return $this->voiture;
+    public function __toString() {
+        return $this->iduser;
     }
 
-    public function setVoiture(string $voiture): self
-    {
-        $this->voiture = $voiture;
-
-        return $this;
-    }
-
-    public function getIsVerified(): ?int
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(int $isVerified): self
-    {
-        $this->isVerified = $isVerified;
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
 }

@@ -4,9 +4,10 @@ namespace App\Form;
 
 use App\Entity\Reservation;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -20,13 +21,11 @@ class ReservationType extends AbstractType
                 'required'=>true,
                 'constraints'=>[new Assert\GreaterThan(0)]
             ])
-            ->add('valide',TextType::class, [
-                'required'=>true,
-                'constraints'=>[new Assert\GreaterThan(0)]
-            ])
+            ->add('valide',HiddenType::class)
             ->add('nbpersonne',TextType::class, [
                 'required'=>true,
-                'constraints'=>[new Assert\GreaterThan(0)]
+                'constraints'=>[new Assert\GreaterThan(0)],
+                'attr' => array('class' => 'form-control','style' => 'margin-right:40px')
             ])
             ->add('forfait', ChoiceType::class, [
                 'choices' => [
@@ -43,11 +42,11 @@ class ReservationType extends AbstractType
                 'required'=>true,
                 'constraints'=>[new Assert\GreaterThan(0)]
             ])
-            ->add('datearr')
-            ->add('datedep')
-            ->add('dateres')
-            ->add('deadlineannulation')
-            ->add('iduser')
+            ->add('datearr',DateTimeType::class)
+            ->add('datedep',DateTimeType::class)
+            ->add('dateres', HiddenType::class)
+            ->add('deadlineannulation', HiddenType::class)
+            ->add('iduser', HiddenType::class)
             ->add('idhebr')
         ;
     }

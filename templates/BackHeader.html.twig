@@ -100,9 +100,27 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item">
-                <a style="padding: 10px 5px 10px 5px;" href="{{ path('admin_utilisateurs')}}">
+                <a style="padding: 10px 5px 10px 5px;" href="#">
                     <i style="margin-right: 10px;" class="fa fa-user"></i>
                     <span style="display: contents;" class="menu-title" data-i18n="">Gestion des utilisateurs</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_reservation_index', {'etat': 0})  }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Gestion des Reservations</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_paiement_index')}}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Gestion des Paiements</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_ticket_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Gestion des Tickets</span>
                 </a>
             </li>
 

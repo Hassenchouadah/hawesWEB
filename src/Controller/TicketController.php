@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Ticket;
+use App\Entity\Reservation;
+use App\Entity\Paiement;
 use App\Form\TicketType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,24 +27,26 @@ class TicketController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_ticket_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/{idres}/{idpmt}/new', name: 'app_ticket_new', methods: ['GET', 'POST'])]
+    public function new(Request $request, EntityManagerInterface $entityManager, $idres, $idpmt): Response
     {
         $ticket = new Ticket();
-        $form = $this->createForm(TicketType::class, $ticket);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($ticket);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_ticket_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('ticket/new.html.twig', [
-            'ticket' => $ticket,
-            'form' => $form,
-        ]);
+        $reservation = $entityManager
+            ->getRepository(Reservation::class)
+            ->findReservation($idres);
+        $paiement = $entityManager
+            ->getRepository(Paiement::class)
+            ->findPaiementOnly($idpmt);
+        //dd($reservation,$paiement);
+        //dd($reservation);
+        $ticket->setIdres($reservation);
+        $ticket->setIdpmt($paiement);
+        $ticket->setDeleted(0);
+        //dd($ticket);
+        $entityManager->persist($ticket);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_reservation_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{idticket}', name: 'app_ticket_show', methods: ['GET'])]

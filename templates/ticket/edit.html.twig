@@ -1,8 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 
 {% block title %}Edit Ticket{% endblock %}
 
 {% block body %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
     <h1>Edit Ticket</h1>
 
     {{ include('ticket/_form.html.twig', {'button_label': 'Update'}) }}

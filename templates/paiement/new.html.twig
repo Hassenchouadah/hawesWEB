@@ -1,8 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseFront.html.twig' %}
 
 {% block title %}New Paiement{% endblock %}
 
 {% block body %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
     <h1>Create new Paiement</h1>
 
     {{ include('paiement/_form.html.twig') }}

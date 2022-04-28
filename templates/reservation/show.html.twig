@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseFront.html.twig' %}
 
 {% block title %}Reservation{% endblock %}
 
@@ -54,7 +54,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_reservation_index') }}">back to list</a>
+    <a href="{{ path('app_reservation_index', {'etat': 0})  }}">back to list</a>
 
     <a href="{{ path('app_reservation_edit', {'idres': reservation.idres}) }}">edit</a>
 
