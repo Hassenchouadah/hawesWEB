@@ -45,6 +45,74 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/pages/chat-application.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('back-assets/css/pages/dashboard-analytics.min.css') }}">
 <link rel="stylesheet" href="{{ asset('back-assets/css/sweetalert2.min.css') }}">
+<style>
+    .rating {
+        display: inline-block;
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        font-size: 50px;
+    }
+
+    .rating label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .rating label:last-child {
+        position: static;
+    }
+
+    .rating label:nth-child(1) {
+        z-index: 5;
+    }
+
+    .rating label:nth-child(2) {
+        z-index: 4;
+    }
+
+    .rating label:nth-child(3) {
+        z-index: 3;
+    }
+
+    .rating label:nth-child(4) {
+        z-index: 2;
+    }
+
+    .rating label:nth-child(5) {
+        z-index: 1;
+    }
+
+    .rating label input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+    .rating label .icon {
+        float: left;
+        color: transparent;
+    }
+
+    .rating label:last-child .icon {
+        color: #000;
+    }
+
+    .rating:not(:hover) label input:checked ~ .icon,
+    .rating:hover label:hover input ~ .icon {
+        color: #09f;
+    }
+
+    .rating label input:focus:not(:checked) ~ .icon:last-child {
+        color: #000;
+        text-shadow: 0 0 5px #09f;
+    }
+
+</style>
 <!-- END: Page CSS-->
 
 <body class="vertical-layout vertical-menu 2-columns   fixed-navbar" data-open="click" data-menu="vertical-menu"
@@ -162,22 +230,29 @@
             </li>
             <li class=" nav-item">
                 <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_home') }}">
-                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <i style="margin-right: 10px;" class="fa fa-home"></i>
                     <span style="display: contents;" class="menu-title" data-i18n="">home</span>
                 </a>
             </li>
 
             <li class=" nav-item">
                 <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_avis_index') }}">
-                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <i style="margin-right: 10px;" class="fa fa-comment-o"></i>
                     <span style="display: contents;" class="menu-title" data-i18n="">Avis</span>
                 </a>
             </li>
 
-              <li class=" nav-item">
+            <li class=" nav-item">
                 <a style="padding: 10px 5px 10px 5px;" href=" {{ path('app_reclamation_index') }}">
-                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <i style="margin-right: 10px;" class="fa fa-sticky-note-o"></i>
                     <span style="display: contents;" class="menu-title" data-i18n="">Reclamation</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href=" {{ path('app_type_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-bars"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Type reclamation</span>
                 </a>
             </li>
 

@@ -7,46 +7,6 @@
 
 
 
-   
-{% block content %}
-<div class="navigation-background"></div>
-    <div class="main-menu-content">
-        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item">
-                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_dashboard') }}">
-                    <i style="margin-right: 10px;" class="fa fa-user"></i>
-                    <span style="display: contents;" class="menu-title" data-i18n="">Dashboard</span>
-                </a>
-            </li>
-            <li class=" nav-item">
-                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_home') }}">
-                    <i style="margin-right: 10px;" class="fa fa-user"></i>
-                    <span style="display: contents;" class="menu-title" data-i18n="">home</span>
-                </a>
-            </li>
-
-            <li class=" nav-item">
-                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_avis_index') }}">
-                    <i style="margin-right: 10px;" class="fa fa-user"></i>
-                    <span style="display: contents;" class="menu-title" data-i18n="">Avis</span>
-                </a>
-            </li>
-
-              <li class=" nav-item">
-                <a style="padding: 10px 5px 10px 5px;" href=" {{ path('app_reclamation_index') }}">
-                    <i style="margin-right: 10px;" class="fa fa-user"></i>
-                    <span style="display: contents;" class="menu-title" data-i18n="">Reclamation</span>
-                </a>
-            </li>
-
-
-
-        </ul>
-    </div>
-</div>
-
-{% endblock %}
-
 
 
 
@@ -54,31 +14,36 @@
 
 {% block body %}
     <h1>Reclamation</h1>
-<br>
-
-<br>
-
+    <br>
+<input type="text" placeholder="search..." id="hethi">
+    <br>
+<div id="table">
     <table class="table">
         <thead>
-            <tr>
-              
-                <th>Email</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+
+            <th>Type</th>
+            <th>Description</th>
+            <th>Date d'ajoute</th>
+            <th>actions</th>
+            
+        </tr>
         </thead>
         <tbody>
         {% for reclamation in reclamations %}
             <tr>
-             
-                <td>{{ reclamation.email }}</td>
-                <td>{{ reclamation.description }}</td>
+
+                <td>{{ reclamation.type.name }}</td>
+                <td>{{ reclamation.descRec }}</td>
+                <td>{{ reclamation.dateajoutrec | date("m-d-Y")  }}</td>
                 <td>
-                    <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}">show</a>
-                   {#} <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">Modifier</a>{#}
-                   <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">Modifier</a>
-                       {{ include('reclamation/_delete_form.html.twig') }}
+                    {% if reclamation.traite == 0 %}
+                        <a href="{{ path('traiter_reclamation', {'id': reclamation.idRec}) }}">Traiter</a>
+                    {% else %}
+                        reclamation traité!
+                    {% endif %}
                 </td>
+                
             </tr>
         {% else %}
             <tr>
@@ -88,5 +53,22 @@
         </tbody>
     </table>
 
-   
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script >
+        $(function() {
+            $("#hethi").keyup(function () {
+                $.ajax({
+                    url : "{{ path('rec_serach') }}",
+                    type: "get",
+                    data : { 'value' : $(this).val() }
+                }).done(function (response) {
+                    var tableau = $(response).find("table");
+                    $('#table').empty();
+                    $('#table').append(tableau);
+                })
+            });
+        })
+    </script>
 {% endblock %}

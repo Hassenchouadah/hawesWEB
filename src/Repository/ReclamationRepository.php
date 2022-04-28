@@ -73,4 +73,16 @@ class ReclamationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findInput($value)
+    {
+        return $this->createQueryBuilder('r')
+            ->Where('r.descRec LIKE :descRec')
+            ->orWhere('r.dateajoutrec LIKE :dateajoutrec')
+            ->setParameter('descRec', "%".$value."%")
+            ->setParameter('dateajoutrec', "%".$value."%")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

@@ -62,6 +62,31 @@ class AvisRepository extends ServiceEntityRepository
     }
     */
 
+    public function findInput($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.dateajoutavis LIKE :dateajoutavis')
+            ->orWhere('a.etoile LIKE :etoile')
+            ->orWhere('a.descAvis LIKE :descAvis')
+            ->setParameter('dateajoutavis', "%".$value."%")
+            ->setParameter('etoile', "%".$value."%")
+            ->setParameter('descAvis', "%".$value."%")
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function avgRating()
+    {
+        $statement= $this->getEntityManager()
+            ->getConnection()
+            ->prepare("SELECT avg(etoile) FROM avis");
+        $statement->execute();
+        $results = $statement->fetchOne();
+
+        return $results;
+    }
+
     /*
     public function findOneBySomeField($value): ?Avis
     {

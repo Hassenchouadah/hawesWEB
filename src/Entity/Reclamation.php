@@ -2,62 +2,153 @@
 
 namespace App\Entity;
 
-use App\Repository\ReclamationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+
+
 /**
- * @ORM\Entity(repositoryClass=ReclamationRepository::class)
+ * Reclamation
+ *
+ * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="type_id", columns={"type_id"}), @ORM\Index(name="idUser", columns={"idUser"})})
+ * @ORM\Entity
  */
 class Reclamation
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id_rec", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $idRec;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *  @Assert\NotBlank(message="email is required")
-     * @Assert\Email
-     *     message = "The email '{{ value }}' is not a valid email."
-     */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+   /**
+     * @var string
      * @Assert\NotBlank(message="description is required")
-     * @Assert\Length(min="8", maxMessage="le nom doit depasser 8 caractéres") 
+     * @Assert\Length(min="8", maxMessage="le nom doit depasser 8 caractéres")
+     * @ORM\Column(name="desc_rec", type="string", length=3000, nullable=false)
      */
-    private $description;
+    private $descRec;
 
-    public function getId(): ?int
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="traite", type="integer", nullable=false)
+     */
+    private $traite = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateAjoutrec", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+     */
+    private $dateajoutrec = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="dateTraitrec", type="datetime", nullable=true)
+     */
+
+    private $datetraitrec;
+
+    /**
+     * @var \Utilisateurs
+     *
+     * @ORM\ManyToOne(targetEntity="Utilisateurs")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idUser", referencedColumnName="idUser")
+     * })
+     */
+    private $iduser;
+
+    /**
+     * @var \Type
+     *
+     * @ORM\ManyToOne(targetEntity="Type")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     * })
+     */
+    private $type;
+
+    public function getIdRec(): ?int
     {
-        return $this->id;
+        return $this->idRec;
     }
 
-    public function getEmail(): ?string
+    public function getDescRec(): ?string
     {
-        return $this->email;
+        return $this->descRec;
     }
 
-    public function setEmail(string $email): self
+    public function setDescRec(string $descRec): self
     {
-        $this->email = $email;
+        $this->descRec = $descRec;
 
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getTraite(): ?int
     {
-        return $this->description;
+        return $this->traite;
     }
 
-    public function setDescription(string $description): self
+    public function setTraite(int $traite): self
     {
-        $this->description = $description;
+        $this->traite = $traite;
 
         return $this;
     }
+
+    public function getDateajoutrec(): ?\DateTimeInterface
+    {
+        return $this->dateajoutrec;
+    }
+
+    public function setDateajoutrec(\DateTimeInterface $dateajoutrec): self
+    {
+        $this->dateajoutrec = $dateajoutrec;
+
+        return $this;
+    }
+
+    public function getDatetraitrec(): ?\DateTimeInterface
+    {
+        return $this->datetraitrec;
+    }
+
+    public function setDatetraitrec(?\DateTimeInterface $datetraitrec): self
+    {
+        $this->datetraitrec = $datetraitrec;
+
+        return $this;
+    }
+
+    public function getIduser(): ?Utilisateurs
+    {
+        return $this->iduser;
+    }
+
+    public function setIduser(?Utilisateurs $iduser): self
+    {
+        $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    public function getType(): ?Type
+    {
+        return $this->type;
+    }
+
+    public function setType(?Type $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+
 }

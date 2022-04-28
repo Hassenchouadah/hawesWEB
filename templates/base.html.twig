@@ -28,6 +28,7 @@
     </style>
 
 
+
     <link rel='stylesheet' id='colorbox-css'
         href="{{asset('assets/plugins/wp-colorbox/example5/colorbox080f.css?ver=5.8.2')}}" type='text/css'
         media='all' />
@@ -135,12 +136,73 @@
             .woocommerce-product-gallery {
                 opacity: 1 !important;
             }
+            .rating {
+                display: inline-block;
+                position: relative;
+                height: 50px;
+                line-height: 50px;
+                font-size: 50px;
+            }
+
+            .rating label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                cursor: pointer;
+            }
+
+            .rating label:last-child {
+                position: static;
+            }
+
+            .rating label:nth-child(1) {
+                z-index: 5;
+            }
+
+            .rating label:nth-child(2) {
+                z-index: 4;
+            }
+
+            .rating label:nth-child(3) {
+                z-index: 3;
+            }
+
+            .rating label:nth-child(4) {
+                z-index: 2;
+            }
+
+            .rating label:nth-child(5) {
+                z-index: 1;
+            }
+
+            .rating label input {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+            }
+
+            .rating label .icon {
+                float: left;
+                color: transparent;
+            }
+
+            .rating label:last-child .icon {
+                color: #000;
+            }
+
+            .rating:not(:hover) label input:checked ~ .icon,
+            .rating:hover label:hover input ~ .icon {
+                color: #09f;
+            }
+
+            .rating label input:focus:not(:checked) ~ .icon:last-child {
+                color: #000;
+                text-shadow: 0 0 5px #09f;
+            }
         </style>
     </noscript>
-
-
-
-
 
 
     {% block stylesheets %}
@@ -872,11 +934,12 @@
                                         class="caret"></span></a>
                                 <ul role="menu" class=" dropdown-menu clearfix">
                                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-294">
-                                        <a title="Guides" href="{{ path('app_avis_new') }}">Avis</a>
+                                        <a title="Guides" href="{{ path('myAvis') }}">Avis</a>
                                     </li>
                                     <li class="menu-item menu-item-type-post_type menu-item-object-agent menu-item-295">
-                                        <a title="Guide Details" href="{{ path('app_reclamation_new') }}">Reclamation</a>
+                                        <a title="Guide Details" href="{{ path('my') }}">Reclamation</a>
                                     </li>
+
                                 </ul>
                             </li>
                             <li
