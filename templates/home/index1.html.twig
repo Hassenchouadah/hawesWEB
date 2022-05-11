@@ -1,0 +1,361 @@
+{% extends 'baseFront.html.twig' %}
+
+
+{% block body %}
+
+
+    <div id="tours_widget-7" class="widget widget_tours_widget">
+
+
+        <!-- Start of Tour section
+    ============================================= -->
+        <section id="tour" class="activity-section">
+            <div class="container">
+                <div class="activity-top">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="section-title headline">
+                                <span>Activities</span>
+                                <h2>
+                                    Take a look at the most preferred travels by activity types. </h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="activity-title-text">
+                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo
+                                    rincididunt ut labore et dolore magna aliqua. Quis suspendisse onsectetur
+                                    adipiscing.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-filter-content">
+                    <div class="button-group activity-filter-buttons text-center clearfix">
+                    
+                     <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
+                        <button class="filter-button is-checked" data-filter="*">All activities </button>
+                        <button class="filter-button" data-filter=".adventure-tours">Adventure Tours</button>
+                        <button class="filter-button" data-filter=".guided-tours">Guided Tours</button>
+                        <button class="filter-button" data-filter=".sightseeing-tours">Sightseeing Tours</button>
+                    </div>
+                    <div class="activity-filter-area grid clearfix"
+                        data-isotope="{ &quot;masonry&quot;: { &quot;columnWidth&quot;: 0 } }">
+                        <div class="grid-sizer"></div>
+
+                        {%for h in hebergements%}
+                        <div class="grid-item grid-size-25 guided-tours">
+
+
+
+
+                            <a href="#"><div class="activity-card">
+                                <div class="activity-img position-relative">
+                                    <span class="price-badge">$ {{h.prix}}</span>
+                                    <a href="#"> <img width="420" height="280"
+                                        src="{{asset('h.image')}}" class=" wp-post-image"
+                                        alt="" loading="lazy" /> <span class="activity-hover-icon"><i
+                                                class="fas fa-heart"></i></span>
+                                 </a>
+                                </div>
+                                <div class="activity-text">
+                                    <div class="activity-tilte-head headline ul-li">
+                                        <h3><a href="#" title="{{ h.nomHotel }}">{{ h.nomHotel }}</a></h3>
+                                        <div class="activity-features">
+                                            <div class="icon-text">
+                                                <div class="icon"><i class="fas fa-clock"></i></div>
+
+                                                 {% if h.piscine == 1 %}
+                                                   
+                                                   avec piscine
+                                                   {% else %}
+                                                   pas de piscine
+
+                                                 {% endif %}
+
+                                                
+
+                                            </div>
+                                            <div class="icon-text">
+                                                <div class="icon"><i class="fas fa-map"></i></div><a href="#">{{h.adress}}</a>
+                                            </div>
+                                            <div class="icon-text">
+                                                <div class="icon"><i class="fas fa-credit-card"></i></div>annulation facile
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="activity-agent clearfix">
+                                        <div class="activity-agent-img float-left">
+                                            <img width="150" height="150"
+                                                src="{{asset('assets/uploads/2021/12/agent-2-150x150.jpg')}}"
+                                                class="author-img wp-post-image" alt="" loading="lazy" />
+                                        </div>
+                                        <div class="activity-agent-text">
+                                            <h4><a href="#">Fred
+                                                    Mercury</a></h4>
+                                            <span>Demo Travel Inc</span>
+                                        </div>
+                                        <div class="activity-btn float-right">
+                                            <a href="#"><i class="fas fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                               </div>
+                            </div></a>
+                        {% endfor %}
+                        
+                        
+                        
+                    </div>
+                    <div>
+                    <center>
+                    <div class="navigation">
+                      {{ knp_pagination_render(hebergements,'@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',{'rounded': true,'size': 'small' }) }}
+                                       
+                               </div>
+                          
+                    </center>
+                    </div>
+                    <div class="activity-more-btn text-center">
+                        <a href="#">More Activities<i class="fas fa-sync-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of Tour section
+    ============================================= -->
+
+
+    </div>
+
+
+    <div id="cta_widget-2" class="widget widget_cta_widget">
+
+        <section id="cta" class="cta-section position-relative">
+            <div class="container">
+                <div class="cta-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="cta-section-left">
+                                <div class="section-title headline">
+                                    <h2>Sign Up Today and Don&#039;t Miss Opportunities</h2>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="cta-section-right headline pera-content">
+                                <p>
+                                    Eu volutpat odio facilisis mauris sit amet massa. Pellentesque habitant morbi
+                                    tristique senectus et netus et malesuada. Duis ut diam quam nulla porttitor massa id
+                                    neque. Egestas dui id ornare arcu odio ut sem. </p>
+                                <a href="#">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div id="articles_widget-3" class="widget widget_articles_widget">
+
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <div class="blog-content-1">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="section-title headline">
+                                <div class="col-12">
+                                    <div class="section-header-left title">
+                                        <h3 class="text-light-black header-title"> <span>Blog</span>
+                                        </h3>
+                                    </div>
+                                </div>
+                                <h2>
+                                    You may learn more by our recent blog posting. </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="blog-slider" class="blog-slide-content owl-carousel">
+
+                        <div class="blog-content">
+                            <div class="blog-img text-center position-relative">
+                                <img width="880" height="440" src="{{asset('assets/uploads/2021/12/blog-lrg-3.jpg')}}"
+                                    class="attachment-large size-large wp-post-image" alt="" loading="lazy" />
+                                <div class="blog-author">
+                                    <div class="blog-author-img float-left">
+                                        <img alt=''
+                                            src='http://1.gravatar.com/avatar/af8f966d8961c37e29603e8e4fbdd337?s=48&amp;d=mm&amp;r=g'
+                                            srcset='http://1.gravatar.com/avatar/af8f966d8961c37e29603e8e4fbdd337?s=96&#038;d=mm&#038;r=g 2x'
+                                            class='avatar avatar-48 photo' height='48' width='48' loading='lazy' />
+                                    </div>
+                                    admin
+                                </div>
+                                <div class="blog-category">
+                                    Activity </div>
+                            </div>
+                            <div class="blog-text headline pera-content">
+                                <div class="blog-meta">
+                                    <a href="#"><i class="far fa-calendar-alt"></i> Dec 7</a>
+                                    <a href="#"><i class="far fa-comments"></i> 0 comments </a>
+                                </div>
+                                <div class="blog-title">
+                                    <h3>
+                                        <a href="#">
+                                            7 Activities in Venice </a>
+                                    </h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor... </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blog-content">
+                            <div class="blog-img text-center position-relative">
+                                <img width="880" height="440" src="{{asset('assets/uploads/2021/12/blog-lrg-2.jpg')}}"
+                                    class="attachment-large size-large wp-post-image" alt="" loading="lazy" />
+                                <div class="blog-author">
+                                    <div class="blog-author-img float-left">
+                                        <img alt=''
+                                            src='http://1.gravatar.com/avatar/af8f966d8961c37e29603e8e4fbdd337?s=48&amp;d=mm&amp;r=g'
+                                            srcset='http://1.gravatar.com/avatar/af8f966d8961c37e29603e8e4fbdd337?s=96&#038;d=mm&#038;r=g 2x'
+                                            class='avatar avatar-48 photo' height='48' width='48' loading='lazy' />
+                                    </div>
+                                    admin
+                                </div>
+                                <div class="blog-category">
+                                    Culture </div>
+                            </div>
+                            <div class="blog-text headline pera-content">
+                                <div class="blog-meta">
+                                    <a href="#"><i class="far fa-calendar-alt"></i> Dec 7</a>
+                                    <a href="#"><i class="far fa-comments"></i> 0 comments </a>
+                                </div>
+                                <div class="blog-title">
+                                    <h3>
+                                        <a href="#">
+                                            5 Things to Do in Venice </a>
+                                    </h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor... </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blog-content">
+                            <div class="blog-img text-center position-relative">
+                                <img width="880" height="440" src="{{asset('assets/uploads/2021/12/blog-lrg-1.jpg')}}"
+                                    class="attachment-large size-large wp-post-image" alt="" loading="lazy" />
+                                <div class="blog-author">
+                                    <div class="blog-author-img float-left">
+                                        <img alt=''
+                                            src='http://1.gravatar.com/avatar/af8f966d8961c37e29603e8e4fbdd337?s=48&amp;d=mm&amp;r=g'
+                                            srcset='http://1.gravatar.com/avatar/af8f966d8961c37e29603e8e4fbdd337?s=96&#038;d=mm&#038;r=g 2x'
+                                            class='avatar avatar-48 photo' height='48' width='48' loading='lazy' />
+                                    </div>
+                                    admin
+                                </div>
+                                <div class="blog-category">
+                                    Sightseeing </div>
+                            </div>
+                            <div class="blog-text headline pera-content">
+                                <div class="blog-meta">
+                                    <a href="#"><i class="far fa-calendar-alt"></i> Dec 7</a>
+                                    <a href="#"><i class="far fa-comments"></i> 0 comments </a>
+                                </div>
+                                <div class="blog-title">
+                                    <h3>
+                                        <a href="#">
+                                            Places to See in Venice </a>
+                                    </h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor... </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $.ajax({
+                    type:'GET',
+                    url:'{{path('ajaxsearch')}}',
+                    data:value
+                    if(value!="")
+                    {
+
+                    }
+
+                    }
+
+
+                }
+                )
+                console.log(value);
+                
+            });
+        });
+    </script>
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+        var searchRequest = null;
+        $("#myInput").keyup(function() {
+            var minlength = 1;
+            var that = this;
+            var value = $(this).val();
+            
+            if (value.length >= minlength ) {
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "GET",
+                    url: "{{ path('ajaxsearch') }}",
+                    data: {
+                        'q' : value
+                    },
+                    dataType: "text",
+                    success: function(msg){
+                        //we need to check if the value is the same
+                        if (value==$(that).val()) {
+                            $.each(value, function(key, arr) {
+                                $.each(arr, function(id, value) {
+                                    if (key == 'entities') {
+                                        if (id != 'error') {
+                                           $('activity-filter-area grid clearfix').append(data);
+                                        } else {
+                                            $('activity-filter-area grid clearfix').append(data);
+                                        }
+                                    }
+                                });
+                            });
+                            
+                        }
+                     }
+                });
+            }
+        });
+    });
+</script>
+
+{% endblock %}
