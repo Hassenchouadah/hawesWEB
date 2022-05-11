@@ -1,95 +1,90 @@
 <?php
 
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
-
-
-use App\Entity\Utilisateur;
 /**
- * Hebergement
- *
  * @ORM\Table(name="hebergement")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\HebergementRepository")
  */
 class Hebergement
 {
     /**
      * @var int
-     *
      * @ORM\Column(name="id_hbg", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("hebergement")
      */
     private $idHbg;
 
     /**
      * @var string
-     *
+     * @Groups("hebergement")
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
 
     /**
      * @var string
-     *
+     * @Groups("hebergement")
      * @ORM\Column(name="city", type="string", length=255, nullable=false)
      */
     private $city;
 
     /**
      * @var \DateTime
-     *
-     * @ORM\Column(name="date_ajout", type="date", nullable=false)
+     * @Groups("hebergement")
+     * @ORM\Column(name="date_ajout", type="date", nullable=true)
      */
     private $dateAjout;
 
     /**
      * @var string
-     *
+     * @Groups("hebergement")
      * @ORM\Column(name="adress", type="string", length=255, nullable=false)
      */
     private $adress;
 
     /**
      * @var string
-     *
+     * @Groups("hebergement")
      * @ORM\Column(name="nom_hotel", type="string", length=30, nullable=false)
      */
     private $nomHotel;
 
     /**
      * @var int
-     *
+     * @Groups("hebergement")
      * @ORM\Column(name="nb_chambres", type="integer", nullable=false)
      */
     private $nbChambres;
 
     /**
      * @var int
-     *
+     * @Groups("hebergement")
      * @ORM\Column(name="nb_suites", type="integer", nullable=false)
      */
     private $nbSuites;
 
     /**
      * @var int
-     *
+     * @Groups("hebergement")
      * @ORM\Column(name="piscine", type="integer", nullable=false)
      */
     private $piscine;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     * @var string|null
+     * @Groups("hebergement")
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 
     /**
      * @var int
-     *
+     * @Groups("hebergement")
      * @ORM\Column(name="prix", type="integer", nullable=false)
      */
     private $prix;
@@ -200,7 +195,7 @@ class Hebergement
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
