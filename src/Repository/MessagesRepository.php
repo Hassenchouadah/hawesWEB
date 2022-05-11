@@ -44,12 +44,12 @@ class MessagesRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-    public function getMessages($connectedId,$friendId) {
-        $query = $this->getEntityManager()
-            ->createQuery("SELECT msg FROM App\Entity\Messages msg WHERE msg.sender =$connectedId AND msg.receiver =$friendId OR msg.sender =$friendId AND msg.receiver =$connectedId ORDER BY msg.created");
-        return $query->getResult();
-    }
 
+   public function getMessages($connectedId,$friendId) {
+       $query = $this->getEntityManager()
+           ->createQuery("SELECT msg FROM App\Entity\Messages msg WHERE msg.sender =$connectedId AND msg.receiver =$friendId OR msg.sender =$friendId AND msg.receiver =$connectedId ORDER BY msg.created");
+       return $query->getResult();
+   }
     // /**
     //  * @return Messages[] Returns an array of Messages objects
     //  */

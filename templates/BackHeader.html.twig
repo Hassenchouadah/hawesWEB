@@ -54,24 +54,24 @@
 
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link"
                                                                    href="#" data-toggle="dropdown"> <span class="avatar avatar-online"><img
-                                        src="{{ asset('images/utilisateurs/' ~ 'Houssem.jpg') }}"
+                                        src="{{ asset('images/utilisateurs/' ~ app.user.image) }}"
                                         alt="avatar"></span></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="arrow_box_right"><a class="dropdown-item" href="#">
                                     <span class="avatar avatar-online">
 
                                         <span class="user-name text-bold-700 ml-1">
-                                            hassen chouadah
+                                            {{ app.user.prenomUser }} {{ app.user.nomUser }}
                                         </span>
                                     </span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Edit
+                                <a class="dropdown-item" href="{{ path('admin_profile',{'id':app.user.id}) }}"><i class="fa fa-user"></i> Edit
                                     Profile</a>
 
                                 <a class="dropdown-item" href="#"><i class="fa fa-message"></i> Chats</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fa fa-xmark"></i>
+                                <a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fa fa-xmark"></i>
                                     Logout</a>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
      data-img="{{ asset('back-assets/images/backgrounds/02.jpg') }}">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="#"><img class="brand-logo"
+            <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ path('admin_home') }}"><img class="brand-logo"
                                                                                alt="Chameleon admin logo" src="{{ asset('back-assets/images/logo/logo.png') }}" />
                     <h3 class="brand-text">Hawes Dashboard</h3>
                 </a></li>
@@ -100,7 +100,7 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item">
-                <a style="padding: 10px 5px 10px 5px;" href="{{ path('admin_utilisateurs')}}">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('admin_utilisateurs') }}">
                     <i style="margin-right: 10px;" class="fa fa-user"></i>
                     <span style="display: contents;" class="menu-title" data-i18n="">Gestion des utilisateurs</span>
                 </a>

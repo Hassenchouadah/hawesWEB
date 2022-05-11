@@ -1,0 +1,94 @@
+.avatar-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
+}
+
+.notification-button{
+    background-color: #e4e6eb;
+    width: 40px;
+    height: 40px;
+    margin: 0px 5px 0px 5px;
+    border-radius: 50%;
+    border: none;
+}
+
+.notification-button:hover{
+    background-color: #cccfd4;
+    cursor: pointer;
+}
+
+.notification-button img{
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: calc(50% - 20px);
+    left: calc(50% - 14px);
+}
+
+.notification-group{
+    position: relative;
+    display: inline-block;
+}
+
+.messages-content{
+    display: none;
+    position: absolute;
+    left: -150px;
+    background-color: white;
+    min-width: 160px;
+    max-width: 400px;
+    width: 350px;
+    min-height: 100px;
+    max-height: 80vh;
+    overflow: auto;
+    box-shadow: 0px -1px 10px 0px rgb(0 0 0 / 20%);
+    z-index: 1;
+    border-radius: 7px;
+    padding: 9px
+}
+
+.notification-content{
+    display: none;
+    position: absolute;
+    left: -150px;
+    background-color: white;
+    min-width: 160px;
+    max-width: 400px;
+    width: 350px;
+    min-height: 100px;
+    max-height: 80vh;
+    overflow: auto;
+    box-shadow: 0px -1px 10px 0px rgb(0 0 0 / 20%);
+    z-index: 1;
+    border-radius: 7px;
+    padding: 9px
+}
+
+
+.show {
+    display: block;
+}
+
+
+
+
+.fullscreen-btn{
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+}
+.fullscreen-btn:hover{
+    background-color: #e4e6eb;
+}
+
+.fullscreen-btn img{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: -2px;
+}

@@ -1,0 +1,366 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block stylesheets %}
+    <link rel='stylesheet' href="{{ asset('assets/css/chat-application.css') }}" type='text/css'/>
+{% endblock %}
+
+
+{% block header %}
+    <header style="border-bottom: 1px solid rgb(62 57 107 / 9%);" id="header" class="header-main">
+        <div style="padding: 7px 0px 7px;" class="header-menu-wrap clearfix">
+            <div class="container">
+                <div class="main-navigation  float-left">
+                    <nav class="main-nav ul-li">
+
+                        <ul id="primary-menu-mobile" class="navbar-nav text-capitalize clearfix">
+                            <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-207 submenu dropdown">
+                                <a title="Home" href="{{ path('app_home') }}">Home
+                                </a>
+
+                            </li>
+                            <li
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-208 submenu dropdown">
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                {% if app.user %}
+                    <div class="header-cart-login float-right p-0 d-flex">
+                        <div style="margin-right: 5px;" class="top-cart-login">
+                            <img class="avatar-img" src="{{ asset('images/utilisateurs/' ~ app.user.image) }}"
+                                 alt="avatar">{{ app.user.prenomUser }}
+                        </div>
+
+
+
+
+
+                        <div class="top-submit">
+                            <a href="{{ path('app_logout') }}">
+                                Logout</a>
+                        </div>
+
+                    </div>
+
+                {% else %}
+                    <div class="header-cart-login float-right p-0">
+                        <div class="top-cart-login">
+                            <a href="{{ path('app_login') }}">
+                                <i class="fa fa-user"></i> Login
+                            </a>
+                        </div>
+                        <div class="top-submit">
+                            <a href="{{ path('app_register') }}">
+                                Register</a>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex">
+        <div class="d-flex flex-column flex-shrink-0 p-3 Mixchat-sidenav">
+            <span class="fs-4 discussionsText">Discussions</span>
+            <input style="margin-bottom: 10px; margin-top: 6px;" class='Mixchat-search-input' type="text"
+                   placeholder='Rechercher dans HawesChat'/>
+            <ul class="nav nav-pills flex-column mb-auto discussions-list">
+
+                {% for user in users %}
+                    <li class="nav-item">
+                        <a href="{{ path('app_discussion',{'friendId':user.id}) }}" class="discussionItem {% if user.id==activeFriend.id %} activeDiscussion {% endif %} ">
+                            <img src="{{ asset('images/utilisateurs/' ~user.image) }}" alt="avatar"/>
+                            <div class='discussionContent'>
+                                <p class='discussionUsername'>{{ user.prenomUser~" "~user.nomUser }}</p>
+                                <p class='discussionMessage'>{{ user.updatedAt|date }}</p>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+
+
+
+            </ul>
+
+
+        </div>
+
+
+        <div class='mixchatContent'>
+
+            {% if activeFriend.id != null %}
+                <div class='activeFriend'>
+                    <div style="padding: 7px;" class='d-flex'>
+                        <img src="{{ asset('images/utilisateurs/'~activeFriend.image) }}" alt="avatar"/>
+                        <div style="margin-left: 9px">
+                            <p class='discussionUsername'>{{ activeFriend.prenomUser~" "~activeFriend.nomUser }}</p>
+                            <p class='discussionMessage'>En ligne</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+
+
+            <div id='messagesContainer' class='messagesContainer'>
+                {% for msg in messages %}
+                    {% if msg.sender.id==app.user.id %}
+                        {% if msg.type=="text" %}
+                            <div class="message-container MCRight">
+                                <div class='message-row'>
+                                    <div style="flex-direction: row-reverse" class='d-flex'>
+                                        <div class="chat-content-right">
+                                            {{ msg.message }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        {% elseif msg.type=="image" %}
+                            <div class="message-container MCRight">
+                                <div class="message-row">
+                                    <div style="flex-direction: row-reverse" class="d-flex">
+                                        <div style="padding: 7px;" class="chat-content-right">
+                                            <img class="img-inside-message" src="{{ msg.message }}"  alt="message-img"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% elseif msg.type=="combined" %}
+                            {% set values = msg.message|split('#') %}
+                            <div class="message-container MCRight">
+                                <div class="message-row">
+                                    <div style="flex-direction: row-reverse" class="d-flex">
+                                        <div style="padding: 7px" class="chat-content-right">
+                                            <p class="messageContent-text">{{ values[0] }}</p>
+                                            <img class="img-inside-message" src="{{ values[1] }}"  alt="message-img"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+
+
+                    {% else %}
+
+                        {% if msg.type=="text" %}
+                            <div class="message-container">
+                                <div class='message-row'>
+                                    <img class='message-img' src="{{ asset('images/utilisateurs/'~msg.sender.image) }}" alt="avatar"/>
+                                    <div class='d-flex'>
+                                        <div class="chat-content">
+                                            {{ msg.message }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% elseif msg.type=="image" %}
+                            <div class="message-container">
+                                <div class='message-row'>
+                                    <img class='message-img' src="{{ asset('images/utilisateurs/'~msg.sender.image) }}" alt="avatar"/>
+                                    <div class='d-flex'>
+                                        <div style="padding: 7px;" class="chat-content">
+                                            <img class="img-inside-message" src="{{ msg.message }}"  alt="message-img"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% elseif msg.type=="combined" %}
+                            {% set values = msg.message|split('#') %}
+                            <div class="message-container">
+                                <div class='message-row'>
+                                    <img class='message-img' src="{{ asset('images/utilisateurs/'~msg.sender.image) }}" alt="avatar"/>
+                                    <div class='d-flex'>
+                                        <div style="padding: 7px" class="chat-content">
+                                            <p class="messageContent-text">{{ values[0] }}</p>
+                                            <img class="img-inside-message" src="{{ values[1] }}"  alt="message-img"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                    {% endif %}
+
+
+                {% endfor %}
+
+
+
+            </div>
+
+            <div id="upload-section" class="upload-section">
+                <div style="position: relative;width: 76px;">
+                    <img id="upload-section-img" class="upload-section-img" src="{{ asset('images/utilisateurs/hassen-624f1a6a75c49574753915.jpg') }}" alt="uploadedimage">
+                    <button onclick="hideUploadSection()" class="delete-upload-img-btn"> <i class="fa fa-close"></i> </button>
+                </div>
+
+
+            </div>
+            <div class='Mixchat-sendContainer'>
+
+                <form onsubmit="sendMessage(event)" autoComplete="off">
+                    <input autoComplete="false" name="hidden" type="text" style="display: none"/>
+
+                    <input onchange="onImageUpload(event)" type="file" id='MixchatFileInput' style="display: none"/>
+                    <button type="button" onclick="triggerFileChooser()" class="uploadBtn"><img src="{{ asset('assets/uploadimg.png') }}" alt="uploadimg"></button>
+                    <input id='MixchatInput' class='Mixchat-input' type='text' placeholder='Aa' />
+
+                    <button type='submit' class='Mixchat-sendBtn'>
+                        <img class='send-message' src="{{ asset('assets/send-message.png') }}" alt="sendMessage"/>
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type='text/javascript' src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script>
+
+
+        let messageImage = "";
+        const triggerFileChooser = () => {
+            document.getElementById("MixchatFileInput").click();
+        }
+
+        const hideUploadSection = () => {
+            document.getElementById("upload-section").style.display = "none";
+            messageImage = "";
+        }
+
+        const onImageUpload = (event) => {
+            let file = event.target.files[0];
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+                console.log("image message :", reader);
+                messageImage = reader.result.toString();
+                document.getElementById("upload-section-img").src = reader.result.toString();
+                document.getElementById("upload-section").style.display = "flex";
+
+            };
+            reader.onerror = function (error) {
+                console.log('Error: ', error);
+            };
+        }
+
+        const sendMessage = (event) => {
+            event.preventDefault();
+
+            const messageContent =document.getElementById('MixchatInput').value;
+
+            if(messageImage && messageContent){ //send text and image
+                $.ajax({
+                    url: "{{ path('chat_addMessage') }}",
+                    data: {
+                        friendId: {{ activeFriend.id }},
+                        type:"combined",
+                        message:messageContent+"#"+messageImage
+                    },
+                    type: 'POST',
+                    dataType: "json",
+                    success: function (data) {
+                        if(data === "added"){
+
+                            document.getElementById("messagesContainer").insertAdjacentHTML('beforeend','' +
+                                '<div class="message-container MCRight">' +
+                                '<div class="message-row">' +
+                                '<div style="flex-direction: row-reverse" class="d-flex">' +
+                                '<div style="padding: 7px;" class="chat-content-right">' +
+                                '<p class="messageContent-text">'+messageContent+'</p>'+
+                                '<img class="img-inside-message" src="'+messageImage+'"  alt="message-img"/>'+
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'
+                            );
+                            document.getElementById('MixchatInput').value = "";
+                            hideUploadSection();
+                        }else{
+                            console.log("something went wrong",data)
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("Ajax request failed. data");
+                    }
+                })
+            }else if(document.getElementById('MixchatInput').value){ //send text only
+                $.ajax({
+                    url: "{{ path('chat_addMessage') }}",
+                    data: {
+                        friendId: {{ activeFriend.id }},
+                        type:"text",
+                        message:messageContent
+                    },
+                    type: 'POST',
+                    dataType: "json",
+                    success: function (data) {
+                        if(data === "added"){
+                            document.getElementById("messagesContainer").insertAdjacentHTML('beforeend','<div class="message-container MCRight"><div class="message-row"><div style="flex-direction: row-reverse" class="d-flex"><div class="chat-content-right">'+messageContent+'</div></div></div></div>');
+                            document.getElementById('MixchatInput').value = "";
+                        }else{
+                            console.log("something went wrong",data)
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("Ajax request failed. data");
+                    }
+                });
+            }else if(messageImage){//send image only
+                $.ajax({
+                    url: "{{ path('chat_addMessage') }}",
+                    data: {
+                        friendId: {{ activeFriend.id }},
+                        type:"image",
+                        message:messageImage
+                    },
+                    type: 'POST',
+                    dataType: "json",
+                    success: function (data) {
+                        if(data === "added"){
+                            document.getElementById("messagesContainer").insertAdjacentHTML('beforeend','' +
+                                '<div class="message-container MCRight">' +
+                                '<div class="message-row">' +
+                                '<div style="flex-direction: row-reverse" class="d-flex">' +
+                                '<div style="padding: 7px;" class="chat-content-right">' +
+                                '<img class="img-inside-message" src="'+messageImage+'"  alt="message-img"/>'+
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'
+                            );
+                            document.getElementById('MixchatInput').value = "";
+                            hideUploadSection();
+                        }else{
+                            console.log("something went wrong",data)
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.log("Ajax request failed. data");
+                    }
+                })
+            }else{
+                console.log("no message ")
+            }
+        }
+
+
+
+    </script>
+{% endblock %}

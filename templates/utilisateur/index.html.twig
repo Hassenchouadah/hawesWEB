@@ -14,7 +14,7 @@
                                 <thead>
                                 <tr>
                                     <th class="border-top-0">Nom et Prenom</th>
-                                   
+                                    <th class="border-top-0">Date d'inscription</th>
                                     <th class="border-top-0">Contact</th>
                                     <th class="border-top-0">Role</th>
 
@@ -23,26 +23,35 @@
                                 </thead>
                                 <tbody>
                                 {% for user in users %}
+                                    {% set diff = currentDate.diff(user.updatedAt) %}
                                     <tr>
                                         <td class="text-truncate align-middle">
-                                            <a href="{{ path('admin_profile',{'id':user.id}) }}">
-                                                <img style="width: 50px;height: 50px;border-radius: 7px;" src="{{ asset('images/utilisateurs/' ~ user.image) }}" alt="avatar">
+                                            <a href="#">
+                                                <img style="width: 50px;height: 50px;border-radius: 7px;" src="{{ asset('images/utilisateurs/'~user.image) }}" alt="avatar">
                                                 {{ user.prenomUser~" "~user.nomUser }}
                                             </a>
                                         </td>
 
-                                        
+                                        <td class="text-truncate pb-0">
+                                            <span>{{ user.updatedAt|date }}</span>
+                                            {% if diff.days == 0 %}
+                                            <p class="font-small-2 text-muted"> Aujourd'hui</p>
+                                            {% else %}
+                                            <p class="font-small-2 text-muted"> {{ diff|date }}</p>
+                                            {% endif %}
+
+                                        </td>
 
                                         <td class="text-truncate pb-0">
                                             <span>{{ user.telUser}}</span>
-                                            <p style="margin-bottom: 0;" class="font-small-2 text-muted">{{ user.emailUser }}</p>
+                                            <p style="margin-bottom: 0;" class="font-small-2 text-muted">{{ user.email }}</p>
                                             <div class="d-flex">
                                                 <i class="fa fa-map-marker"></i>&nbsp; <p class="font-small-2 text-muted">{{ user.adresseUser }}</p>
                                             </div>
                                         </td>
 
                                         <td class="text-truncate pb-0">
-                                            <span>{{ user.role}}</span>
+                                            <span>{{ user.roles[0]}}</span>
                                         </td>
 
 
@@ -50,8 +59,8 @@
                                                 <a href="{{ path('admin_messages',{'friendId':user.id}) }}" class="btn btn-outline-primary">
                                                     <i class="fa fa-paper-plane"></i>
                                                 </a>
-                                                {% if user.id!=1 %}
-                                                    {% if user.role == "User"  %}
+                                                {% if app.user.id != user.id %}
+                                                    {% if user.roles[0] == "ROLE_USER"  %}
                                                         <button onclick="GrantRoleAdmin({{ user.id }})" class="btn btn-primary">
                                                             Accorder l'acces
                                                         </button>
@@ -60,12 +69,10 @@
                                                             Supprimer l'acces
                                                         </button>
                                                     {% endif %}
-                                                
 
-                                                    <button class="btn btn-danger" href="#">
-                                                        Bloquer
-                                                    </button>
-                                               {% endif %}
+
+
+                                                {% endif %}
 
 
                                                 </td>

@@ -2,27 +2,32 @@
 
 namespace App\Controller;
 
+use App\Entity\Messages;
+use App\Entity\Utilisateur;
+use App\Form\MessageType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use App\Entity\Messages;
-use App\Entity\Utilisateurs;
-use App\Form\MessageType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-class MessageController extends AbstractController
+/**
+ * @IsGranted("ROLE_ADMIN")
+ */
+class MessagesController extends AbstractController
 {
-    
     /**
      * @Route("/admin/messages/{friendId}", name="admin_messages")
      */
     public function index($friendId,Request $request): Response
     {
-        $connectedId =1;
-        $connected = $this->getDoctrine()->getRepository(Utilisateurs::class)->find($connectedId);
-        $friend = $this->getDoctrine()->getRepository(Utilisateurs::class)->find($friendId);
+        $connectedId = $this->getUser()->getId();
+        $friend = $this->getDoctrine()->getRepository(Utilisateur::class)->find($friendId);
+
         $messages = $this->getDoctrine()->getRepository(Messages::class)->getMessages($connectedId,$friendId);
+
         $newMessage = new Messages();
+
         $form = $this->createForm(MessageType::class, $newMessage);
         $form->handleRequest($request);
 
@@ -30,8 +35,8 @@ class MessageController extends AbstractController
 
             $newMessage->setCreated(new \DateTime('now'));
             $newMessage->setSeen(0);
-            $newMessage->setSender($connected);
-            $newMessage->setType("message");
+            $newMessage->setSender($this->getUser());
+            $newMessage->setType("text");
             $newMessage->setReceiver($friend);
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -42,14 +47,14 @@ class MessageController extends AbstractController
             return $this->redirectToRoute('admin_messages', ['friendId' => $friendId]);
 
         }
-        return $this->render('message/index.html.twig', [
+        return $this->render('messages/index.html.twig', [
             'messages' => $messages,
             'friend' => $friend,
             'currentDate' => new \DateTime('now'),
             'messageForm' => $form->createView()
         ]);
-        
     }
+
     /**
     * @Route("/admin/deleteMessage/{friendId}/{id}", name="delete_message")
     */
@@ -62,4 +67,5 @@ class MessageController extends AbstractController
         return $this->redirectToRoute('admin_messages', ['friendId' => $friendId]);
 
     }
+
 }

@@ -18,12 +18,12 @@ class Messages
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateurs")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur")
      */
     private $sender;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateurs")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur")
      */
     private $receiver;
 
@@ -33,7 +33,7 @@ class Messages
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text", length=4294967295)
      */
     private $message;
 
@@ -52,24 +52,24 @@ class Messages
         return $this->id;
     }
 
-    public function getSender(): ?Utilisateurs
+    public function getSender(): ?Utilisateur
     {
         return $this->sender;
     }
 
-    public function setSender(Utilisateurs $sender): self
+    public function setSender(Utilisateur $sender): self
     {
         $this->sender = $sender;
 
         return $this;
     }
 
-    public function getReceiver(): ?Utilisateurs
+    public function getReceiver(): ?Utilisateur
     {
         return $this->receiver;
     }
 
-    public function setReceiver(Utilisateurs $receiver): self
+    public function setReceiver(Utilisateur $receiver): self
     {
         $this->receiver = $receiver;
 

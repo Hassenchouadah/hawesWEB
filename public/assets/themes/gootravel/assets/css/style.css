@@ -601,9 +601,9 @@ select:visited {
   right: -18px;
   content: "\f107";
   font-size: 16px;
-  font-weight: 700;
   position: absolute;
   transition: 0.3s all ease-in-out;
+  display: none;
 }
 
 .main-nav .dropdown .dropdown-menu {
@@ -723,9 +723,10 @@ select:visited {
   line-height: 38px;
   text-align: center;
   transition: 0.3s all ease-in-out;
-  color: var(--thm-primary);
+  color: white;
+  background-color: var(--thm-primary);
   padding: 0 20px;
-  border: 1px dashed var(--thm-primary);
+  border: 1px solid var(--thm-primary);
   border-radius: 24px;
   margin: 0px 15px;
 }
@@ -749,6 +750,7 @@ select:visited {
   height: 18px;
   position: absolute;
   background-color: #d9d9d9;
+  display: none;
 }
 
 .header-cart-login .top-cart-login:last-child:after {
