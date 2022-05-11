@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avis {% endblock %}
+
+
+
+
+{% block content %}
+    <div class="navigation-background"></div>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_dashboard') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Dashboard</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_home') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">home</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_avis_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Avis</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href=" {{ path('app_reclamation_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Reclamation</span>
+                </a>
+            </li>
+
+
+
+        </ul>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+
+
+
+{% block body %}
+    <h1>Avis </h1>
+    <br>
+    <a href="{{ path('app_avis_new') }}">Ajouter avis </a>
+
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>Description</th>
+            <th>Etoile</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for avi in avis %}
+            <tr>
+
+                <td>{{ avi.descAvis }}</td>
+                <td>
+  {% for i in 1..5 %}
+      {% if i <= avi.etoile   %}
+    <span class="icon">★</span>
+        
+ {% endif %}
+
+
+      {% endfor %}
+           </td>
+                <td>
+                    <a href="{{ path('app_avis_show', {'id': avi.idAvis}) }}">show</a>
+                    {#}   <a href="{{ path('app_avis_edit', {'id': avi.id}) }}">editer</a>{#}
+                    <a href="{{ path('app_avis_edit', {'id': avi.idAvis}) }}">editer</a>
+                    {{ include('avis/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {#}
+    <a href="{ path('app_avis_new') }}">Create new</a>
+{#}
+{% endblock %}

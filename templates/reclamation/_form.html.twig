@@ -1,0 +1,14 @@
+{{ form_start(form , {'attr': {'novalidate': 'novalidate'}}) }}
+{{ form_widget(form.type) }}
+      {{ form_errors(form.type) }}
+<br>
+<br>
+
+
+    {{ form_widget(form.descRec) }}
+      {{ form_errors(form.descRec) }}
+      <br>
+           <br>
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

@@ -1,0 +1,74 @@
+{% extends 'dashboard/index.html.twig' %}
+
+{% block title %}Reclamation index{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+{% block body %}
+    <h1>Reclamation</h1>
+    <br>
+<input type="text" placeholder="search..." id="hethi">
+    <br>
+<div id="table">
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>Type</th>
+            <th>Description</th>
+            <th>Date d'ajoute</th>
+            <th>actions</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+
+                <td>{{ reclamation.type.name }}</td>
+                <td>{{ reclamation.descRec }}</td>
+                <td>{{ reclamation.dateajoutrec | date("m-d-Y")  }}</td>
+                <td>
+                    {% if reclamation.traite == 0 %}
+                        <a class="btn btn-success" href="{{ path('traiter_reclamation', {'id': reclamation.idRec}) }}">Traiter</a>
+                    {% else %}
+                        reclamation traité!
+                    {% endif %}
+                </td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script >
+        $(function() {
+            $("#hethi").keyup(function () {
+                $.ajax({
+                    url : "{{ path('rec_serach') }}",
+                    type: "get",
+                    data : { 'value' : $(this).val() }
+                }).done(function (response) {
+                    var tableau = $(response).find("table");
+                    $('#table').empty();
+                    $('#table').append(tableau);
+                })
+            });
+        })
+    </script>
+{% endblock %}

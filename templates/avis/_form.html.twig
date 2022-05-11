@@ -1,0 +1,53 @@
+
+{{ form_start(form , {'attr': {'novalidate': 'novalidate'}}) }}
+<fieldset>
+<label>
+    <input type="radio" name="stars" value="1" />
+    <span class="icon">★</span>
+</label>
+<label>
+    <input type="radio" name="stars" value="2" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+</label>
+<label>
+    <input type="radio" name="stars" value="3" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+</label>
+<label>
+    <input type="radio" name="stars" value="4" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+</label>
+<label>
+    <input type="radio" name="stars" value="5" />
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+    <span class="icon">★</span>
+</label>
+<br>
+<br>
+</fieldset>
+
+
+    {{ form_widget(form.descAvis) }}
+      {{ form_errors(form.descAvis) }}
+
+<br>
+<br>
+
+
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+<script>
+    $(':radio').change(function() {
+        console.log('New star rating: ' + this.value);
+    });
+</script>

@@ -1,0 +1,119 @@
+{% extends 'dashboard/index.html.twig' %}
+
+{% block title %}Avis {% endblock %}
+
+
+
+   
+{% block content %}
+<div class="navigation-background"></div>
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_dashboard') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Dashboard</span>
+                </a>
+            </li>
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_home') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">home</span>
+                </a>
+            </li>
+
+            <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href="{{ path('app_avis_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Avis</span>
+                </a>
+            </li>
+
+              <li class=" nav-item">
+                <a style="padding: 10px 5px 10px 5px;" href=" {{ path('app_reclamation_index') }}">
+                    <i style="margin-right: 10px;" class="fa fa-user"></i>
+                    <span style="display: contents;" class="menu-title" data-i18n="">Reclamation</span>
+                </a>
+            </li>
+
+
+
+        </ul>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+{% block body %}
+    <h1>Avis </h1>
+    <br>
+    <h4> Rating : {{ rating }}</h4>
+    <br>
+    <input type="text" placeholder="search..." id="hethi">
+
+    <br>
+<div id="table">
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>Description</th>
+                <th>Etoile</th>
+                <th>Date</th>
+                 <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for avi in avis %}
+            <tr>
+
+                <td>{{ avi.descAvis }}</td>
+                <td>
+  {% for i in 1..5 %}
+      {% if i <= avi.etoile   %}
+    <span class="icon">★</span>
+        
+ {% endif %}
+
+
+      {% endfor %}
+           </td>
+                <td>{{ avi.dateajoutavis | date("m-d-Y") }}</td>
+                 <td>
+          {{ include('avis/_delete_admin_form.html.twig') }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+       
+        </tbody>
+    </table>
+</div>
+{#}
+    <a href="{ path('app_avis_new') }}">Create new</a>
+{#}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script >
+        $(function() {
+            $("#hethi").keyup(function () {
+                $.ajax({
+                    url : "{{ path('avi_serach') }}",
+                    type: "get",
+                    data : { 'value' : $(this).val() }
+                }).done(function (response) {
+                    var tableau = $(response).find("table");
+                    $('#table').empty();
+                    $('#table').append(tableau);
+                })
+            });
+        })
+    </script>
+{% endblock %}

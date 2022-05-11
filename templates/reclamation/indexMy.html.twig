@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reclamation{% endblock %}
+
+
+
+
+
+{% block body %}
+    <h1>Reclamation</h1>
+    <br>
+    <a href="{{ path('app_reclamation_new') }}">Ajouter Reclamation </a>
+
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+
+            <th>Type</th>
+            <th>Date</th>
+            <th>actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for reclamation in reclamations %}
+            <tr>
+
+                <td>{{ reclamation.type.name }}</td>
+                <td>{{ reclamation.dateajoutrec | date("m-d-Y") }}</td>
+                <td>
+                    <a href="{{ path('app_reclamation_show', {'id': reclamation.idRec}) }}">show</a>
+                    {% if reclamation.traite == 0 %}
+                    {#} <a href="{{ path('app_reclamation_edit', {'id': reclamation.idRec}) }}">Modifier</a>{#}
+                    <a href="{{ path('app_reclamation_edit', {'id': reclamation.idRec}) }}">Modifier</a>
+                    {{ include('reclamation/_delete_form.html.twig') }}
+                    {% else %}
+                        reclamation traité!
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

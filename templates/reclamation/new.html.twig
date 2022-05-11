@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une Reclamation{% endblock %}
+
+{% block body %}
+    
+
+ <div class="header-cart-login float-left p-0">
+     <div class="top-cart-login">
+                 
+                    </div>
+                    <div class="top-submit">
+                    <i class="flaticon-add"><h2>Ajouter une Reclamation</h2> </i>
+                          
+                    </div>
+                    
+
+    </div>
+
+
+
+
+     <br>
+          <br>
+    {{ include('reclamation/_form.html.twig') }}
+
+    <a href="{{ path('my') }}">Retour </a>
+{% endblock %}

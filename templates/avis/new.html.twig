@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Avis{% endblock %}
+
+{% block body %}
+    
+     
+     
+ <div class="header-cart-login float-left p-0">
+     <div class="top-cart-login">
+                 
+                    </div>
+                    <div class="top-submit">
+                    <i class="flaticon-add"><h2>Ajouter un Avis</h2> </i>
+                          
+                    </div>
+                    
+
+    </div>
+
+
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     <br>     
+     <br>
+    {{ include('avis/_form.html.twig') }}
+
+    <br>
+     <a href="{{ path('app_home') }}">Retour </a>
+{% endblock %}
